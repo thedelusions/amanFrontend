@@ -18,14 +18,16 @@ const SignUpForm = () => {
   const { setUser } = useContext(UserContext);
   const [message, setMessage] = useState('');
   const [formData, setFormData] = useState({
-    username: '',
+    name: '',
+    email: '',
     password: '',
     passwordConf: '',
+    phone: '',
+    area: '',
   });
 
 
-  const { username, password, passwordConf } = formData;
-
+  const { name, email, password, passwordConf, phone, area } = formData;
   const handleChange = (evt) => {
     setMessage('');
     setFormData({ ...formData, [evt.target.name]: evt.target.value });
@@ -40,14 +42,14 @@ const SignUpForm = () => {
       setUser(newUser);
       // Take the user to the (non-existent) home page after they sign up.
       // We'll get to this shortly!
-      navigate('/');
+      navigate('/sign-in');
     } catch (err) {
       setMessage(err.message);
     }
   };
 
   const isFormInvalid = () => {
-    return !(username && password && password === passwordConf);
+    return !(name && email && password && password === passwordConf && phone && area);
   };
 
   return (
@@ -56,12 +58,23 @@ const SignUpForm = () => {
       <p>{message}</p>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor='username'>Username:</label>
+          <label htmlFor='name'>Name:</label>
           <input
             type='text'
             id='name'
-            value={username}
-            name='username'
+            value={name}
+            name='name'
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor='email'>Email:</label>
+          <input
+            type='email'
+            id='email'
+            value={email}
+            name='email'
             onChange={handleChange}
             required
           />
@@ -84,6 +97,28 @@ const SignUpForm = () => {
             id='confirm'
             value={passwordConf}
             name='passwordConf'
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor='phone'>Phone:</label>
+          <input
+            type='tel'
+            id='phone'
+            value={phone}
+            name='phone'
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor='area'>Area:</label>
+          <input
+            type='text'
+            id='area'
+            value={area}
+            name='area'
             onChange={handleChange}
             required
           />
