@@ -12,7 +12,7 @@ const SignInForm = () => {
   const { setUser } = useContext(UserContext);
   const [message, setMessage] = useState('');
   const [formData, setFormData] = useState({
-    username: '',
+    email: '',
     password: '',
   });
 
@@ -24,8 +24,6 @@ const SignInForm = () => {
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     try {
-      // This function doesn't exist yet, but we'll create it soon.
-      // It will cause an error right now
       const signedInUser = await signIn(formData);
 
       setUser(signedInUser);
@@ -39,15 +37,14 @@ const SignInForm = () => {
     <main>
       <h1>Sign In</h1>
       <p>{message}</p>
-      <form autoComplete='off' onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor='email'>Username:</label>
+          <label htmlFor='email'>Email:</label>
           <input
-            type='text'
-            autoComplete='off'
-            id='username'
-            value={formData.username}
-            name='username'
+            type='email'
+            id='email'
+            value={formData.email}
+            name='email'
             onChange={handleChange}
             required
           />
@@ -56,7 +53,6 @@ const SignInForm = () => {
           <label htmlFor='password'>Password:</label>
           <input
             type='password'
-            autoComplete='off'
             id='password'
             value={formData.password}
             name='password'
