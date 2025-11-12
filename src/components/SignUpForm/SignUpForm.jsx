@@ -6,6 +6,7 @@ import { signUp } from '../../services/authService';
 
 // Import the UserContext object
 import { UserContext } from '../../contexts/UserContext';
+import areas from '../../data/bh.json'
 
 const SignUpForm = () => {
   const navigate = useNavigate();
@@ -114,14 +115,20 @@ const SignUpForm = () => {
         </div>
         <div>
           <label htmlFor='area'>Area:</label>
-          <input
-            type='text'
+          <select
             id='area'
             value={area}
             name='area'
             onChange={handleChange}
             required
-          />
+          >
+            <option value=''>Select an area</option>
+            {areas.map((areaObj) => (
+              <option key={areaObj.city} value={areaObj.city}>
+                {areaObj.city}
+              </option>
+            ))}
+          </select>
         </div>
         <div>
           <button disabled={isFormInvalid()}>Sign Up</button>
