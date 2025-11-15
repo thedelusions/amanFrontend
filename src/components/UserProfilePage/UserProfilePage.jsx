@@ -31,3 +31,16 @@ const UserProfilePage = () => {
 
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+     }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    const updated = await userService.updateUser(userId, formData);
+
+    if (updated.error) {
+      alert(updated.error);
+    } else {
+      alert("Profile updated!");
+    }
+  }
