@@ -13,6 +13,7 @@ import { useContext, useState } from 'react';
 import { UserContext } from './contexts/UserContext';
 
 import ReportsList from './components/ReportsList/ReportsList';
+import ReportShow from './components/ReportShow/ReportShow';
 
 const App = () => {
   const { user } = useContext(UserContext);
@@ -37,6 +38,7 @@ const App = () => {
         <Route path='/sign-up' element={<SignUpForm />} />
         <Route path='/sign-in' element={<SignInForm />} />
         <Route path='/reports' element={<ReportsList />} />
+        <Route path='/reports/:id' element={<ReportShow />} />
       </Routes>
     </>
   );

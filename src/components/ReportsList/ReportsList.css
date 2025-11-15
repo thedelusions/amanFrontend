@@ -52,6 +52,33 @@
   padding-top: 15px;
   border-top: 1px solid #eee;
   color: #666;
+
+  /*limit the description to 1 lines  (for consistent layout)*/
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  max-height: 72px;
+  /*this to make sure all cards have the same height and the button don't be in different positions*/
+}
+
+.view-report-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 24px;
+  background-color: #6334db;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  align-items: center;
+}
+
+.view-report-btn:hover {
+  background-color: #6c29b9;
 }
 
 .no-reports {

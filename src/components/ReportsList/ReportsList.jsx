@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as reportService from '../../services/reportService';
 import './ReportsList.css';
 
@@ -6,8 +7,9 @@ const ReportsList = () => {
   const [reports, setReports] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
-  
+
   useEffect(() => {
     const fetchReports = async () => {
       try {
@@ -48,6 +50,12 @@ const ReportsList = () => {
               <p><strong>Type:</strong> {report.type}</p>
               <p><strong>Status:</strong> {report.status}</p>
               <p className='report-description'>{(report.description)}</p>
+              <button 
+                className="view-report-btn"
+                onClick={() => navigate(`/reports/${report._id}`)}
+              >
+                View Report
+              </button>
             </li>
           ))}
         </ul>
