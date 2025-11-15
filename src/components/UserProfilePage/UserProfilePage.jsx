@@ -69,3 +69,41 @@ const UserProfilePage = () => {
             style={{ width: "100%", padding: "8px", margin: "5px 0" }}
           />
 
+          <input
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            placeholder="Phone"
+            style={{ width: "100%", padding: "8px", margin: "5px 0" }}
+          />
+
+          <input
+            name="area"
+            value={formData.area}
+            onChange={handleChange}
+            placeholder="Area"
+            style={{ width: "100%", padding: "8px", margin: "5px 0" }}
+          />
+
+          <button style={{ padding: "10px", marginTop: "10px", width: "100%" }}>
+            Update Profile
+          </button>
+        </form>
+
+        <button
+          onClick={handleDelete}
+          style={{
+            marginTop: "20px",
+            padding: "10px",
+            width: "100%",
+            background: "red",
+            color: "white",
+            border: "none",
+          }}
+        >
+          Delete Account
+        </button>
+      </section>
+
+
+
