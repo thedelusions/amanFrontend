@@ -30,15 +30,13 @@ const NavBar = () => {
         <Link to='/' className="nav-logo">Aman</Link>
         {user ? (
           <ul className="nav-menu">
-            <li><Link to='/'>Home</Link></li>
+            <li><Link to='/home'>Home</Link></li>
             <li><Link to='/reports'>Reports</Link></li>
             <li><Link to='/community'>Community</Link></li>
             <li><Link to='/' onClick={handleSignOut}>Sign Out</Link></li>
           </ul>
         ) : (
           <ul className="nav-menu">
-            <li><Link to='/'>Home</Link></li>
-            <li><Link to='/reports'>Reports</Link></li>
             <li><Link to='/community'>Community</Link></li>
             <li><Link to='/sign-up'>Sign Up</Link></li>
             <li><Link to='/sign-in'>Sign In</Link></li>
