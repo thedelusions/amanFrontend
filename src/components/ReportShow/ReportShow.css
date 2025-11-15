@@ -78,17 +78,17 @@
   background-color: #e74c3c;
 }
 
-.report-description {
+.show-report-description {
   margin-top: 40px;
 }
 
-.report-description h2 {
+.show-report-description h2 {
   color: #2c3e50;
   font-size: 32px;
   margin-bottom: 20px;
 }
 
-.report-description p {
+.show-report-description p {
   color: #555;
   font-size: 18px;
   line-height: 1.6;

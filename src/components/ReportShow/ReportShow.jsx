@@ -72,7 +72,7 @@ const ReportShow = () => {
           )}
         </div>
 
-        <div className="report-description">
+        <div className="show-report-description">
           <h2>Description</h2>
           <p>{report.description}</p>
         </div>
