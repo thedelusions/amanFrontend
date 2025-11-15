@@ -12,7 +12,7 @@ const SignInForm = () => {
   const { setUser } = useContext(UserContext);
   const [message, setMessage] = useState('');
   const [formData, setFormData] = useState({
-    username: '',
+    email: '',
     password: '',
   });
 
@@ -29,7 +29,8 @@ const SignInForm = () => {
       const signedInUser = await signIn(formData);
 
       setUser(signedInUser);
-      navigate('/');
+      navigate(res.user.role === 'admin' ? '/admin/reports' : '/');
+
     } catch (err) {
       setMessage(err.message);
     }
@@ -38,16 +39,15 @@ const SignInForm = () => {
   return (
     <main>
       <h1>Sign In</h1>
-      <p>{message}</p>
       <form autoComplete='off' onSubmit={handleSubmit}>
         <div>
-          <label htmlFor='email'>Username:</label>
+          <label htmlFor='email'>Email:</label>
           <input
             type='text'
             autoComplete='off'
-            id='username'
-            value={formData.username}
-            name='username'
+            id='email'
+            value={formData.email}
+            name='email'
             onChange={handleChange}
             required
           />
@@ -66,7 +66,7 @@ const SignInForm = () => {
         </div>
         <div>
           <button>Sign In</button>
-          <button onClick={() => navigate('/')}>Cancel</button>
+          <button onClick={() => navigate(res.user.role === 'admin' ? '/admin/reports' : '/')}>Cancel</button>
         </div>
       </form>
     </main>

@@ -1,10 +1,13 @@
 // src/components/Landing.jsx
+import { Link } from 'react-router';
 
 const Landing = () => {
   return (
     <main>
-      <h1>Hello, you are on the landing page for visitors.</h1>
-      <p>Sign up now, or sign in to see your super secret dashboard!</p>
+      <h1>Welcome to Aman</h1>
+      <h3>Aman – Your Community Safety Reporting Platform</h3>
+      <h4>Report lost, found, or suspicious items easily and securely</h4>
+      <Link to='/sign-up'>Sign Up</Link> <Link to='/sign-in'>Sign In</Link>
     </main>
   );
 };

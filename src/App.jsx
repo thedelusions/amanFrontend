@@ -16,8 +16,6 @@ const App = () => {
 
   return (
     <>
-      <NavBar />
-
       <Routes>
         {
           user ?
