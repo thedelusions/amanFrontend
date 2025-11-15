@@ -104,6 +104,31 @@ const UserProfilePage = () => {
           Delete Account
         </button>
       </section>
+ <section style={{ marginTop: "40px" }}>
+        <h2>Your Reports</h2>
+
+        {reports.length === 0 && <p>No reports yet.</p>}
+
+        {reports.map((r) => (
+          <div
+            key={r._id}
+            style={{
+              border: "1px solid #ddd",
+              padding: "15px",
+              marginBottom: "10px",
+            }}
+          >
+            <h3>{r.title}</h3>
+            <p>Type: {r.type}</p>
+            <p>Status: {r.status}</p>
+          </div>
+        ))}
+      </section>
+    </main>
+  );
+};
+
+export default UserProfilePage;
 
 
 
