@@ -1,0 +1,130 @@
+.report-show-container {
+  padding: 40px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.back-btn {
+  padding: 10px 20px;
+  margin-bottom: 30px;
+  background-color: #95a5a6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  background-color: #7f8c8d;
+}
+
+.report-show {
+  background: white;
+  border-radius: 8px;
+  padding: 40px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.report-show h1 {
+  margin-top: 0;
+  margin-bottom: 30px;
+  color: #2c3e50;
+  font-size: 48px;
+}
+
+.report-details {
+  margin-bottom: 40px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #eee;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  font-size: 18px;
+  color: #555;
+}
+
+.detail-row strong {
+  color: #2c3e50;
+  min-width: 100px;
+}
+
+.detail-row span {
+  text-align: right;
+}
+
+.report-status {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+}
+
+.status-approved {
+  background-color: #27ae60;
+}
+
+.status-pending {
+  background-color: #f39c12;
+}
+
+.status-rejected {
+  background-color: #e74c3c;
+}
+
+.report-description {
+  margin-top: 40px;
+}
+
+.report-description h2 {
+  color: #2c3e50;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.report-description p {
+  color: #555;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.loading,
+.error-message {
+  text-align: center;
+  padding: 40px;
+  font-size: 18px;
+}
+
+.error-message {
+  color: #e74c3c;
+}
+
+@media (max-width: 576px) {
+  .report-show-container {
+    padding: 20px;
+  }
+
+  .report-show {
+    padding: 20px;
+  }
+
+  .report-show h1 {
+    font-size: 32px;
+  }
+
+  .detail-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .detail-row span {
+    text-align: left;
+    margin-top: 8px;
+  }
+}

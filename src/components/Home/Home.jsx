@@ -10,7 +10,7 @@ const Home = () => {
       <section className="hero-section">
         <h1>Aman</h1>
         <p className="hero-subtitle">Community Watch & Lost & Found</p>
-        {user && <p className="welcome-user">Welcome back</p>}
+        <p className="welcome-user">Welcome back, {user?.name}</p>
       </section>
 
       <section className="features-section">

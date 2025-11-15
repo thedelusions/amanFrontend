@@ -11,9 +11,12 @@ import Home from './components/Home/Home';
 import { useContext } from 'react';
 import { UserContext } from './contexts/UserContext';
 
+import ReportsList from './components/ReportsList/ReportsList';
+import ReportShow from './components/ReportShow/ReportShow';
+
 const App = () => {
   const { user } = useContext(UserContext);
-
+  
   return (
     <>
                 < NavBar />
@@ -21,7 +24,9 @@ const App = () => {
         {
           user ?
           <>
-            <Route path='/home' element={<Home />}/>
+            <Route path='/' element={<Home/>}/>
+            <Route path='/products' element={<h1>Producs</h1>}/>
+            <Route path='/favs' element={<h1>Favs</h1>}/>
             <Route path='/profile' element={<h1>{user.username}</h1>}/>
           </>
             :
@@ -29,10 +34,11 @@ const App = () => {
         }
         <Route path='/sign-up' element={<SignUpForm />} />
         <Route path='/sign-in' element={<SignInForm />} />
+        <Route path='/reports' element={<ReportsList />} />
+        <Route path='/reports/:id' element={<ReportShow />} />
       </Routes>
     </>
   );
 };
 
 export default App;
-
