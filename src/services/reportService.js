@@ -9,6 +9,15 @@ const index = async () => {
   }
 };
 
+const show = async (id) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${id}`);
+    return await res.json();
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 const create = async (formData) => {
   try {
     const res = await fetch(BASE_URL, {
@@ -50,4 +59,4 @@ const deleteReport = async (reportId) => {
   }
 };
 
-export { index, create, update, deleteReport };
+export { index, show, create, update, deleteReport };
