@@ -44,3 +44,28 @@ const UserProfilePage = () => {
       alert("Profile updated!");
     }
   }
+   async function handleDelete() {
+    const sure = window.confirm("Are you sure you want to delete your account?");
+    if (!sure) return;
+
+    await userService.deleteUser(userId);
+    localStorage.removeItem("token");
+    window.location.href = "/";
+  }
+
+  return (
+    <main style={{ padding: "20px" }}>
+      <h1>User Profile</h1>
+
+      <section style={{ maxWidth: "350px" }}>
+        <h2>Edit Profile</h2>
+
+        <form onSubmit={handleSubmit}>
+          <input
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            placeholder="Name"
+            style={{ width: "100%", padding: "8px", margin: "5px 0" }}
+          />
+
