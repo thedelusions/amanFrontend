@@ -1,23 +1,33 @@
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/users`;
-const  headers = { Authorization: `Bearer ${localStorage.getItem('token')}` }
 
-export const index = async () => {
-   try {
-    const res = await fetch(`${BASE_URL}/`, {
-      method: 'GET',
-      headers
-    });
+function getHeaders() {
+  return {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${localStorage.getItem("token")}`,
+  };
+}
 
-    const data = await res.json();
+export async function updateUser(id, formData) {
+  const res = await fetch(`${BASE_URL}/${id}/edit`, {
+    method: "PUT",
+    headers: getHeaders(),
+    body: JSON.stringify(formData),
+  });
+  return res.json();
+}
 
-    if (data.err) {
-      throw new Error(data.err);
-    }
+export async function deleteUser(id) {
+  const res = await fetch(`${BASE_URL}/${id}`, {
+    method: "DELETE",
+    headers: getHeaders(),
+  });
+  return res.json();
+}
 
-    console.log(data)
-    return data
-  } catch (err) {
-    console.log(err);
-    throw new Error(err);
-  }
+export async function getUser(id) {
+  const res = await fetch(`${BASE_URL}/${id}`, {
+    method: "GET",
+    headers: getHeaders(),
+  });
+  return res.json();
 }
