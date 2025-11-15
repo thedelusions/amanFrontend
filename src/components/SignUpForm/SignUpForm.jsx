@@ -1,11 +1,9 @@
-// Import the useContext hook
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router';
-
 import { signUp } from '../../services/authService';
-
-// Import the UserContext object
 import { UserContext } from '../../contexts/UserContext';
+import areas from '../../data/bh.json';
+import './SignUpForm.css';
 
 const SignUpForm = () => {
   const navigate = useNavigate();
@@ -18,14 +16,16 @@ const SignUpForm = () => {
   const { setUser } = useContext(UserContext);
   const [message, setMessage] = useState('');
   const [formData, setFormData] = useState({
-    username: '',
+    name: '',
+    email: '',
     password: '',
     passwordConf: '',
+    phone: '',
+    area: '',
   });
 
 
-  const { username, password, passwordConf } = formData;
-
+  const { name, email, password, passwordConf, phone, area } = formData;
   const handleChange = (evt) => {
     setMessage('');
     setFormData({ ...formData, [evt.target.name]: evt.target.value });
@@ -40,59 +40,100 @@ const SignUpForm = () => {
       setUser(newUser);
       // Take the user to the (non-existent) home page after they sign up.
       // We'll get to this shortly!
-      navigate('/');
+      navigate('/sign-in');
     } catch (err) {
       setMessage(err.message);
     }
   };
 
   const isFormInvalid = () => {
-    return !(username && password && password === passwordConf);
+    return !(name && email && password && password === passwordConf && phone && area);
   };
 
   return (
-    <main>
-      <h1>Sign Up</h1>
-      <p>{message}</p>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor='username'>Username:</label>
-          <input
-            type='text'
-            id='name'
-            value={username}
-            name='username'
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor='password'>Password:</label>
-          <input
-            type='password'
-            id='password'
-            value={password}
-            name='password'
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor='confirm'>Confirm Password:</label>
-          <input
-            type='password'
-            id='confirm'
-            value={passwordConf}
-            name='passwordConf'
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <button disabled={isFormInvalid()}>Sign Up</button>
-          <button onClick={() => navigate('/')}>Cancel</button>
-        </div>
-      </form>
+    <main className="form-container">
+      <div className="form-wrapper">
+        <h1>Sign Up</h1>
+        {message && <p className="error-message">{message}</p>}
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label htmlFor='name'>Name</label>
+            <input
+              type='text'
+              id='name'
+              value={name}
+              name='name'
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor='email'>Email</label>
+            <input
+              type='email'
+              id='email'
+              value={email}
+              name='email'
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor='password'>Password</label>
+            <input
+              type='password'
+              id='password'
+              value={password}
+              name='password'
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor='confirm'>Confirm Password</label>
+            <input
+              type='password'
+              id='confirm'
+              value={passwordConf}
+              name='passwordConf'
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor='phone'>Phone</label>
+            <input
+              type='tel'
+              id='phone'
+              value={phone}
+              name='phone'
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor='area'>Area</label>
+            <select
+              id='area'
+              value={area}
+              name='area'
+              onChange={handleChange}
+              required
+            >
+              <option value=''>Select an area</option>
+              {areas.map((areaObj) => (
+                <option key={areaObj.city} value={areaObj.city}>
+                  {areaObj.city}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="form-buttons">
+            <button type="submit" className="btn-primary" disabled={isFormInvalid()}>Sign Up</button>
+            <button type="button" className="btn-secondary" onClick={() => navigate('/')}>Cancel</button>
+          </div>
+        </form>
+      </div>
     </main>
   );
 };

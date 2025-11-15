@@ -1,0 +1,74 @@
+.home-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 60px 40px;
+}
+
+.hero-section {
+  text-align: center;
+  padding: 100px 40px 80px;
+  margin-bottom: 80px;
+}
+
+.hero-section h1 {
+  font-size: 72px;
+  margin-bottom: 20px;
+  color: #333;
+  font-weight: 600;
+}
+
+.hero-subtitle {
+  font-size: 32px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.welcome-user {
+  font-size: 26px;
+  color: #888;
+  margin-top: 20px;
+}
+
+.features-section {
+  margin-bottom: 80px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.feature-card {
+  padding: 50px 30px;
+  text-align: center;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+}
+
+.feature-card:hover {
+  border-color: #333;
+}
+
+.feature-card h3 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #333;
+  font-weight: 500;
+}
+
+.feature-card p {
+  color: #666;
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 32px;
+  }
+
+  .features-grid {
+    grid-template-columns: 100%;
+  }
+}
