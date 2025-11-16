@@ -30,7 +30,7 @@ const NavBar = () => {
         <Link to='/' className="nav-logo">Aman</Link>
         {user ? (
           <ul className="nav-menu">
-            <li><Link to='/home'>Home</Link></li>
+            <li><Link to='/'>Home</Link></li>
             <li><Link to='/reports'>Reports</Link></li>
             <li><Link to='/community'>Community</Link></li>
             <li><Link to='/' onClick={handleSignOut}>Sign Out</Link></li>
