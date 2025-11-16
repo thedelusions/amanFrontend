@@ -25,6 +25,7 @@ const NavBar = () => {
             <li><Link to="/reports">Reports</Link></li>
             <li><Link to="/community">Community</Link></li>
             <li><Link to="/profile">Profile</Link></li>
+            {user.role === "admin" && <li><Link to="/admin">Admin Dashboard</Link></li>}
             <li>
               <Link to="/" onClick={handleSignOut}>
                 Sign Out
