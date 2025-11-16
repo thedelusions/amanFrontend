@@ -1,5 +1,3 @@
-// src/components/EditReport/EditReport.jsx
-
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import * as reportService from '../../services/reportService';
@@ -78,8 +76,8 @@ const EditReport = () => {
             name="type"
             value={formData.type}
             onChange={handleChange}
-            required
-          >
+            required>
+
             <option value="suspicious">Suspicious</option>
             <option value="lost">Lost</option>
             <option value="found">Found</option>
@@ -96,9 +94,9 @@ const EditReport = () => {
             onChange={handleChange}
             required
           />
-        </div>
+           </div>
 
-        <div>
+          <div>
           <label htmlFor="area">Area:</label>
           <select
             id="area"
@@ -116,8 +114,8 @@ const EditReport = () => {
         <button type="submit">
           Update
         </button>
-      </form>
-    </main>
+           </form>
+             </main>
   );
 };
 

@@ -28,12 +28,20 @@ export const create = async (formData) => {
 };
 
 export const update = async (reportId, formData) => {
-  const res = await fetch(`${BASE_URL}/${reportId}`, {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(formData),
-  });
-  return res.json();
+  try {
+    const res = await fetch(`${BASE_URL}/${reportId}`, {
+      method: "PUT",
+      headers: { 
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      },
+      body: JSON.stringify(formData),
+    });
+
+    return await res.json();
+  } catch (err) {
+    throw new Error(err.message);
+  }
 };
 
 export const deleteReport = async (reportId) => {
