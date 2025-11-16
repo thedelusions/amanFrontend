@@ -34,6 +34,7 @@ const NavBar = () => {
           </ul>
         ) : (
           <ul className="nav-menu">
+            <li><Link to='/reports'>Reports</Link></li>
             <li><Link to="/community">Community</Link></li>
             <li><Link to="/sign-up">Sign Up</Link></li>
             <li><Link to="/sign-in">Sign In</Link></li>
