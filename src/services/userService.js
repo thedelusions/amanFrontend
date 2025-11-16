@@ -1,33 +1,31 @@
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/users`;
 
-function getHeaders() {
-  return {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${localStorage.getItem("token")}`,
-  };
-}
+const headers = () => ({
+  Authorization: `Bearer ${localStorage.getItem("token")}`,
+  "Content-Type": "application/json",
+});
 
-export async function updateUser(id, formData) {
-  const res = await fetch(`${BASE_URL}/${id}/edit`, {
+
+export const index = async () => {
+  const res = await fetch(`${BASE_URL}/`, { headers: headers() });
+  return res.json();
+};
+
+// Update profile
+export const updateUser = async (userId, formData) => {
+  const res = await fetch(`${BASE_URL}/${userId}/edit`, {
     method: "PUT",
-    headers: getHeaders(),
+    headers: headers(),
     body: JSON.stringify(formData),
   });
   return res.json();
-}
+};
 
-export async function deleteUser(id) {
-  const res = await fetch(`${BASE_URL}/${id}`, {
+// Delete profile
+export const deleteUser = async (userId) => {
+  const res = await fetch(`${BASE_URL}/${userId}`, {
     method: "DELETE",
-    headers: getHeaders(),
+    headers: headers(),
   });
   return res.json();
-}
-
-export async function getUser(id) {
-  const res = await fetch(`${BASE_URL}/${id}`, {
-    method: "GET",
-    headers: getHeaders(),
-  });
-  return res.json();
-}
+};

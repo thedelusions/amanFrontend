@@ -42,3 +42,37 @@ const AdminDashboardPage = () => {
         <option value="found">Found</option>
         <option value="other">Other</option>
       </select>
+         {/* Reports List */}
+      {filtered.map((r) => (
+        <div
+          key={r._id}
+          style={{
+            border: "1px solid #ddd",
+            padding: "15px",
+            marginBottom: "10px",
+          }}
+        >
+          <h3>{r.title}</h3>
+          <p>Type: {r.type}</p>
+          <p>Status: {r.status}</p>
+
+          <button
+            onClick={() => updateStatus(r._id, "approved")}
+            style={{ marginRight: "10px" }}
+          >
+            Approve
+          </button>
+
+          <button onClick={() => updateStatus(r._id, "rejected")}>
+            Reject
+          </button>
+        </div>
+      ))}
+
+      {filtered.length === 0 && <p>No reports available.</p>}
+    </main>
+  );
+};
+
+export default AdminDashboardPage;
+
