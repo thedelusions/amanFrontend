@@ -7,9 +7,14 @@ const AdminDashboardPage = () => {
 
 
   useEffect(() => {
+
     const loadReports = async () => {
+      try{
       const data = await reportService.index();
       setReports(data);
+      } catch (error){
+        console.log("Error fetching:", error);
+      }
     };
 
     loadReports();
@@ -17,13 +22,17 @@ const AdminDashboardPage = () => {
 
   
   const updateStatus = async (id, status) => {
+    try {
     await reportService.update(JSON.stringify({ status }), id);
 
     
     setReports((prev) =>
       prev.map((r) => (r._id === id ? { ...r, status } : r))
     );
-  };
+  } catch(error){
+      console.log("Error updating:", error);
+  }
+};
 
  
   const filteredReports =
