@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import * as reportService from '../../services/reportService';
-import areasFile from '../../bh.json';
+import areasFile from '../../data/bh.json';
 import './CreateReport.css';
 
 const CreateReport = () => {
@@ -78,7 +78,7 @@ const CreateReport = () => {
           />
         </div>
 
-        <div>
+         <div>
           <label htmlFor="area">Area:</label>
           <select
             id="area"
@@ -91,14 +91,14 @@ const CreateReport = () => {
               <option key={city} value={city}>{city}</option>
             ))}
           </select>
-        </div>
+         </div>
 
         <button type="submit" >
             Create 
         </button>
-
-      </form>
-    </main>
+  
+        </form>
+        </main>
   );
 };
 

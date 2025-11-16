@@ -1,11 +1,13 @@
 import { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../contexts/UserContext';
 import * as reportService from '../../services/reportService';
+import { useNavigate } from 'react-router';
 import './Home.css';
 
 const Home = () => {
   const { user } = useContext(UserContext);
   const [reports, setReports] = useState([]);
+  const navigate = useNavigate();
 
   // to have summary of reports to be displayed 
  useEffect(() => {
@@ -38,7 +40,7 @@ const Home = () => {
 
         <div>
           <button onClick={() => navigate('/community')}>View Community</button>
-          <button onClick={() => navigate('/create-report')}>Add a Report</button>
+          <button onClick={() => navigate('/reports/create')}>Add a Report</button>
         </div>
       </section>
 
