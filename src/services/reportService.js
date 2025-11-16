@@ -20,17 +20,25 @@ export const create = async (formData) => {
 };
 
 export const update = async (reportId, formData) => {
+  const token = localStorage.getItem('token');
   const res = await fetch(`${BASE_URL}/${reportId}`, {
     method: "PUT",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
+    },
     body: JSON.stringify(formData),
   });
   return res.json();
 };
 
 export const deleteReport = async (reportId) => {
+  const token = localStorage.getItem('token');
   const res = await fetch(`${BASE_URL}/${reportId}`, {
     method: "DELETE",
+    headers: {
+      "Authorization": `Bearer ${token}`
+    }
   });
   return res.json();
 };

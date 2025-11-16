@@ -33,6 +33,47 @@
   font-size: 48px;
 }
 
+.action-buttons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.update-btn,
+.delete-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.update-btn:disabled,
+.delete-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.update-btn {
+  background-color: #115481;
+  color: white;
+}
+
+.update-btn:hover {
+  background-color: #043352;
+}
+
+.delete-btn {
+  background-color: #b11d0d;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #781207;
+}
+
 .report-details {
   margin-bottom: 40px;
   padding-bottom: 30px;

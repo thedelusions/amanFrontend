@@ -12,6 +12,7 @@ const ReportShow = () => {
   const [report, setReport] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
     const fetchReport = async () => {
@@ -40,7 +41,6 @@ const ReportShow = () => {
     const fetchReportComments = async () => {
       try {
         const data = await reportService.getComments(id);
-        console.log('Fetched comments:', data);
         if (data.err) {
           setError(data.err);
         } else {
@@ -68,7 +68,28 @@ const ReportShow = () => {
     }));
   };
 
-  console.log('Report data:', report, 'Comments:', report?.comments);
+  const handleDelete = async () => {
+      try {
+        setDeleting(true);
+        const response = await reportService.deleteReport(id);
+        console.log('Delete response:', response);
+        
+        if (response.err || response.message === 'Error deleting the report') {
+          setError(`Delete failed: ${response.err || response.message}`);
+        } else {
+          navigate('/reports');
+        }
+      } catch (err) {
+        console.error('Delete error:', err);
+        setError('Failed to delete report');
+      } finally {
+        setDeleting(false);
+      }
+  };
+
+  const handleUpdate = () => {
+    navigate(`/reports/${id}/edit`);
+  };
   
 
   if (loading) return <p className="loading">Loading report...</p>;
@@ -83,6 +104,15 @@ const ReportShow = () => {
       
       <div className="report-show">
         <h1>{report.title}</h1>
+        
+        {user && report.author && user._id === report.author._id && (
+          <div className="action-buttons">
+            <button className="update-btn" onClick={handleUpdate}>Update</button>
+            <button className="delete-btn" onClick={handleDelete} disabled={deleting}>
+              {deleting ? 'Deleting...' : 'Delete'}
+            </button>
+          </div>
+        )}
         
         <div className="report-details">
           <div className="detail-row">
