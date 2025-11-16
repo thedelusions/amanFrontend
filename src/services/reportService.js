@@ -11,12 +11,20 @@ export const show = async (id) => {
 };
 
 export const create = async (formData) => {
-  const res = await fetch(BASE_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(formData),
-  });
-  return res.json();
+  try {
+    const res = await fetch(BASE_URL, {
+      method: "POST",
+      headers: { 
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      },
+      body: JSON.stringify(formData),
+    });
+
+    return await res.json();
+  } catch (err) {
+    throw new Error(err.message);
+  }
 };
 
 export const update = async (reportId, formData) => {
@@ -71,11 +79,8 @@ export const getReportsByArea = async (area) => {
       headers:{ "Content-Type": "application/json" },
       body: JSON.stringify(formData),
     });
-    const data = await res.json();
-    if (data.err) {
-      throw new Error(data.err);
-     }
-    return data;
+    
+    return await res.json();
   } catch (err) {
     console.error(err);
     throw new Error(err);
