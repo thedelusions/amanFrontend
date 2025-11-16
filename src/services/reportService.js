@@ -49,6 +49,21 @@ export const getComments = async (reportId) => {
   }
 };
 
+export const addComment = async (reportId, commentText) => {
+  const token = localStorage.getItem('token');
+  const res = await fetch(`${import.meta.env.VITE_BACK_END_SERVER_URL}/comments`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    },
+    body: JSON.stringify({ report_id: reportId, comment_text: commentText })
+  });
+
+  if (!res.ok) throw new Error('Failed to add comment');
+  return await getComments(reportId);
+};
+
 export const getReportsByArea = async (area) => {
   try {
     const res = await fetch(`${BASE_URL}/area/${area}`, {

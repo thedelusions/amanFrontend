@@ -6,28 +6,17 @@ const CommentForm = ({ reportId, onCommentAdded }) => {
   const [newComment, setNewComment] = useState('');
   const [submitting, setSubmitting] = useState(false);
 
-  const handleCommentSubmit = async (e) => {
+const handleCommentSubmit = async (e) => {
     e.preventDefault();
     if (!newComment.trim()) return;
-
     try {
       setSubmitting(true);
-      const token = localStorage.getItem('token');
-      await fetch(`${import.meta.env.VITE_BACK_END_SERVER_URL}/comments`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify({
-          report_id: reportId,
-          comment_text: newComment
-        })
-      });
+      await reportService.addComment(reportId, newComment);
 
       setNewComment('');
-      const data = await reportService.getComments(reportId);
-      onCommentAdded(data);
+      const updatedComments = await reportService.getComments(reportId);
+      onCommentAdded(updatedComments);
+
     } catch (err) {
       console.error('Submit comment error:', err);
     } finally {
