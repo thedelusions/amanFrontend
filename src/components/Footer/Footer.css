@@ -1,0 +1,18 @@
+footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;   
+  align-items: center;
+  padding: 20px 0;
+  text-align: center;
+  background: white;
+  border-top: 2px solid #e2f5f1;
+  margin-top: 40px;
+}
+
+footer p {
+  max-width: 1200px; 
+  color: #4b7b79;
+  font-size: 14px;
+  margin: 0 auto;     
+}

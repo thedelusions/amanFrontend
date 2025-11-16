@@ -1,62 +1,36 @@
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/reports`;
 
-const index = async () => {
-  try {
-    const res = await fetch(BASE_URL);
-    return await res.json();
-  } catch (err) {
-    console.log(err);
-  }
+export const index = async () => {
+  const res = await fetch(BASE_URL);
+  return res.json();
 };
 
-const show = async (id) => {
-  try {
-    const res = await fetch(`${BASE_URL}/${id}`);
-    return await res.json();
-  } catch (err) {
-    console.log(err);
-  }
+export const show = async (id) => {
+  const res = await fetch(`${BASE_URL}/${id}`);
+  return res.json();
 };
 
-const create = async (formData) => {
-  try {
-    const res = await fetch(BASE_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: formData,
-    });
-    return await res.json();
-  } catch (err) {
-    console.log(err);
-  }
+export const create = async (formData) => {
+  const res = await fetch(BASE_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(formData),
+  });
+  return res.json();
 };
 
-const update = async (formData, reportId) => {
-  try {
-    const res = await fetch(`${BASE_URL}/${reportId}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: formData,
-    });
-    return await res.json();
-  } catch (err) {
-    console.log(err);
-  }
+export const update = async (reportId, formData) => {
+  const res = await fetch(`${BASE_URL}/${reportId}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(formData),
+  });
+  return res.json();
 };
 
-const deleteReport = async (reportId) => {
-  try {
-    const res = await fetch(`${BASE_URL}/${reportId}`, {
-      method: 'DELETE'
-    });
-    return await res.json();
-  } catch (err) {
-    console.log(err);
-  }
+export const deleteReport = async (reportId) => {
+  const res = await fetch(`${BASE_URL}/${reportId}`, {
+    method: "DELETE",
+  });
+  return res.json();
 };
-
-export { index, show, create, update, deleteReport };

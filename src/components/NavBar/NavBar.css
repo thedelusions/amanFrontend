@@ -1,50 +1,41 @@
 .navbar {
-  border-bottom: 1px solid #e0e0e0;
-  padding: 0;
   background: white;
+  border-bottom: 2px solid #e2f5f1;
+  padding: 0;
 }
 
 .nav-container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 25px 40px;
+  padding: 24px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .nav-logo {
-  font-size: 38px;
+  font-size: 34px;
   font-weight: 600;
-  color: #333;
+  color: #2c4a4a;
   text-decoration: none;
 }
 
 .nav-menu {
   display: flex;
   list-style: none;
-  gap: 40px;
-  margin: 0;
-  padding: 0;
+  gap: 30px;
 }
 
 .nav-menu li a {
-  color: #666;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 18px;
+  color: #4b7b79;
+  padding-bottom: 4px;
+  transition: 0.2s ease;
 }
 
 .nav-menu li a:hover {
-  color: #333;
+  color: #2c4a4a;
+  border-bottom: 2px solid #7bcac2;
 }
 
-@media (max-width: 768px) {
-  .nav-container {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .nav-menu {
-    gap: 20px;
-  }
-}
