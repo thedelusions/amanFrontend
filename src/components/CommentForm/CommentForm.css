@@ -1,0 +1,41 @@
+.comment-form {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.comment-input {
+  height: 80px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  resize: vertical;
+  color: #333;
+}
+
+.submit-comment-btn {
+  padding: 12px 24px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: flex-start;
+}
+
+.submit-comment-btn:hover:not(:disabled) {
+  background-color: #2980b9;
+}
+
+.submit-comment-btn:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+}

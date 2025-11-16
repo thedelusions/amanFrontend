@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../contexts/UserContext';
 import * as reportService from '../../services/reportService';
+import CommentForm from '../CommentForm/CommentForm';
 import './ReportShow.css';
 
 const ReportShow = () => {
@@ -60,6 +61,13 @@ const ReportShow = () => {
 
   }, [id]);
 
+  const handleCommentAdded = (comments) => {
+    setReport((prevReport) => ({
+      ...prevReport,
+      comments: comments,
+    }));
+  };
+
   console.log('Report data:', report, 'Comments:', report?.comments);
   
 
@@ -107,6 +115,9 @@ const ReportShow = () => {
       </div>
       <div className="comments-section">
           <h2>Comments</h2>
+          
+          <CommentForm reportId={id} onCommentAdded={handleCommentAdded} />
+
           {report.comments && report.comments.length > 0 ? (
             <div className="comments-grid">
               {report.comments.map((comment) => (
