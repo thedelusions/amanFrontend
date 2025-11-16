@@ -34,3 +34,21 @@ export const deleteReport = async (reportId) => {
   });
   return res.json();
 };
+
+export const getReportsByArea = async (area) => {
+  try {
+    const res = await fetch(`${BASE_URL}/area/${area}`, {
+      method: 'GET',
+      headers:{ "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+    const data = await res.json();
+    if (data.err) {
+      throw new Error(data.err);
+     }
+    return data;
+  } catch (err) {
+    console.error(err);
+    throw new Error(err);
+  }
+};
