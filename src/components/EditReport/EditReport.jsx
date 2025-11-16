@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import * as reportService from '../../services/reportService';
 import areasFile from '../../data/bh.json';
-import './CreateReport.css';
+import '../CreateReport/CreateReport.css';
 
 const EditReport = () => {
   const navigate = useNavigate();

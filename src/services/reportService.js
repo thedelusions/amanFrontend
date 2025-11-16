@@ -84,8 +84,10 @@ export const getReportsByArea = async (area) => {
   try {
     const res = await fetch(`${BASE_URL}/area/${area}`, {
       method: 'GET',
-      headers:{ "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
+      headers:{ 
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      },
     });
     
     return await res.json();

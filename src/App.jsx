@@ -16,6 +16,7 @@ import UserProfilePage from "./components/UserProfilePage/UserProfilePage";
 import AdminDashboardPage from "./components/AdminDashboardPage/AdminDashboardPage";
 
 import CreateReport from "./components/CreateReport/CreateReport";
+import EditReport from "./components/EditReport/EditReport";
 
 const App = () => {
   const { user } = useContext(UserContext);
@@ -34,6 +35,7 @@ const App = () => {
             <Route path="/user-reports" element={<UserReports />} />
             <Route path="/profile" element={<UserProfilePage />} />
             <Route path="/reports/create" element={<CreateReport />} />
+            <Route path="/reports/:id/edit" element={<EditReport />} />
           </>
         ) : (
           <>
