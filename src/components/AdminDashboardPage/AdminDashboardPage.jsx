@@ -23,7 +23,7 @@ const AdminDashboardPage = () => {
   
   const updateStatus = async (id, status) => {
     try {
-    await reportService.update(JSON.stringify({ status }), id);
+    await reportService.update(id, { status });
 
     
     setReports((prev) =>
