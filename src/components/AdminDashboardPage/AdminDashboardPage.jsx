@@ -7,72 +7,90 @@ const AdminDashboardPage = () => {
 
 
   useEffect(() => {
-    async function loadReports() {
+    const loadReports = async () => {
       const data = await reportService.index();
       setReports(data);
-    }
+    };
+
     loadReports();
   }, []);
 
-  async function updateStatus(id, status) {
+  
+  const updateStatus = async (id, status) => {
     await reportService.update(JSON.stringify({ status }), id);
 
+    
     setReports((prev) =>
       prev.map((r) => (r._id === id ? { ...r, status } : r))
     );
-  }
-    const filtered =
+  };
+
+ 
+  const filteredReports =
     filter === "all"
       ? reports
       : reports.filter((r) => r.type === filter.toLowerCase());
 
   return (
-    <main style={{ padding: "20px" }}>
-      <h1>Admin Dashboard</h1>
+    <main className="main-container">
+      <header>
+        <h1>Admin Dashboard</h1>
+        <p className="role">Manage and review community reports</p>
+      </header>
 
-      {/* Filter */}
-      <select
-        value={filter}
-        onChange={(e) => setFilter(e.target.value)}
-        style={{ margin: "10px 0", padding: "5px" }}
-      >
-        <option value="all">All Types</option>
-        <option value="suspicious">Suspicious</option>
-        <option value="lost">Lost</option>
-        <option value="found">Found</option>
-        <option value="other">Other</option>
-      </select>
-         {/* Reports List */}
-      {filtered.map((r) => (
-        <div
-          key={r._id}
-          style={{
-            border: "1px solid #ddd",
-            padding: "15px",
-            marginBottom: "10px",
-          }}
+      {}
+      <section className="filter-section">
+        <select
+          value={filter}
+          onChange={(e) => setFilter(e.target.value)}
+          className="filter-dropdown"
         >
-          <h3>{r.title}</h3>
-          <p>Type: {r.type}</p>
-          <p>Status: {r.status}</p>
+          <option value="all">All Types</option>
+          <option value="suspicious">Suspicious</option>
+          <option value="lost">Lost</option>
+          <option value="found">Found</option>
+          <option value="other">Other</option>
+        </select>
+      </section>
 
-          <button
-            onClick={() => updateStatus(r._id, "approved")}
-            style={{ marginRight: "10px" }}
-          >
-            Approve
-          </button>
+      {}
+      <section className="admin-reports-list">
+        {filteredReports.length === 0 && (
+          <p className="no-reports">No reports available.</p>
+        )}
 
-          <button onClick={() => updateStatus(r._id, "rejected")}>
-            Reject
-          </button>
-        </div>
-      ))}
+        {filteredReports.map((r) => (
+          <div key={r._id} className="admin-report-card">
+            <h3>{r.title}</h3>
 
-      {filtered.length === 0 && <p>No reports available.</p>}
+            <p>
+              <strong>Type:</strong> {r.type}
+            </p>
+            <p>
+              <strong>Status:</strong> {r.status}
+            </p>
+
+            {}
+            <div className="admin-actions">
+              <button
+                onClick={() => updateStatus(r._id, "approved")}
+                className="approve-btn"
+              >
+                Approve
+              </button>
+
+              <button
+                onClick={() => updateStatus(r._id, "rejected")}
+                className="reject-btn"
+              >
+                Reject
+              </button>
+            </div>
+          </div>
+        ))}
+      </section>
     </main>
   );
 };
 
 export default AdminDashboardPage;
-

@@ -5,6 +5,7 @@ import * as reportService from "../../services/reportService";
 import * as userService from "../../services/userService";
 
 import Footer from "../Footer/Footer";
+
 import "./UserProfilePage.css";
 
 const UserProfilePage = () => {
@@ -19,26 +20,29 @@ const UserProfilePage = () => {
     area: user?.area || "",
   });
 
+
   useEffect(() => {
     if (!userId) return;
 
-    async function loadReports() {
+    const loadReports = async () => {
       const allReports = await reportService.index();
       const mine = allReports.filter(
         (r) => r.author && r.author._id === userId
       );
       setReports(mine);
-    }
+    };
 
     loadReports();
   }, [userId]);
 
-  function handleChange(e) {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  }
 
-  async function handleSubmit(e) {
+
+  const handleChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
     const updated = await userService.updateUser(userId, formData);
 
     if (updated.error) {
@@ -46,30 +50,40 @@ const UserProfilePage = () => {
     } else {
       alert("Profile updated!");
     }
-  }
+  };
 
-  async function handleDelete() {
-    if (!window.confirm("Are you sure you want to delete your account?")) return;
+  const handleDelete = async () => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete your account?"
+    );
+
+    if (!confirmDelete) return;
 
     await userService.deleteUser(userId);
     localStorage.removeItem("token");
     window.location.href = "/";
-  }
+  };
+
 
   return (
     <>
       <main className="profile-container">
-        <h1 className="profile-title">Your Profile</h1>
 
-        <p className="welcome-text">Welcome, <span>{formData.name}</span> 👋</p>
+        {}
+        <header className="profile-header">
+          <h1>Your Profile</h1>
+          <p className="welcome-text">Welcome, {formData.name || "User"} 👋</p>
+        </header>
 
+        {/* Avatar */}
         <div className="profile-avatar">
           <img
             src="https://cdn-icons-png.flaticon.com/512/847/847969.png"
-            alt="User avatar"
+            alt="Profile avatar"
           />
         </div>
 
+        {}
         <section className="profile-card">
           <h2>Edit Profile</h2>
 
@@ -80,14 +94,12 @@ const UserProfilePage = () => {
               onChange={handleChange}
               placeholder="Name"
             />
-
             <input
               name="phone"
               value={formData.phone}
               onChange={handleChange}
               placeholder="Phone"
             />
-
             <input
               name="area"
               value={formData.area}
@@ -103,21 +115,23 @@ const UserProfilePage = () => {
           </button>
         </section>
 
+        {}
         <section className="reports-section">
           <h2>Your Reports</h2>
 
-          {reports.length === 0 && (
+          {reports.length === 0 ? (
             <p className="no-reports">No reports yet.</p>
+          ) : (
+            reports.map((r) => (
+              <div key={r._id} className="report-card">
+                <h3>{r.title}</h3>
+                <p><strong>Type:</strong> {r.type}</p>
+                <p><strong>Status:</strong> {r.status}</p>
+              </div>
+            ))
           )}
-
-          {reports.map((r) => (
-            <div key={r._id} className="report-card">
-              <h3>{r.title}</h3>
-              <p><strong>Type:</strong> {r.type}</p>
-              <p><strong>Status:</strong> {r.status}</p>
-            </div>
-          ))}
         </section>
+
       </main>
 
       <Footer />
