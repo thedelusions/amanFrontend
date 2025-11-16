@@ -5,6 +5,7 @@ import * as reportService from "../../services/reportService";
 import * as userService from "../../services/userService";
 
 import Footer from "../Footer/Footer";
+import "./UserProfilePage.css"; 
 
 const UserProfilePage = () => {
   const { user } = useContext(UserContext);
@@ -18,7 +19,7 @@ const UserProfilePage = () => {
     area: user?.area || "",
   });
 
-  // Load only THIS user's reports
+  // Load only this user's reports
   useEffect(() => {
     if (!userId) return;
 
@@ -59,20 +60,27 @@ const UserProfilePage = () => {
 
   return (
     <>
-      <main style={{ padding: "20px" }}>
-        <h1>User Profile</h1>
+      <main className="profile-container">
+        <h1 className="profile-title">Your Profile</h1>
 
-        {/* Edit Profile */}
-        <section style={{ maxWidth: "350px" }}>
+        {/* Avatar UI */}
+        <div className="profile-avatar">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/847/847969.png"
+            alt="User avatar"
+          />
+        </div>
+
+        {/* Profile Form */}
+        <section className="profile-card">
           <h2>Edit Profile</h2>
 
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className="profile-form">
             <input
               name="name"
               value={formData.name}
               onChange={handleChange}
               placeholder="Name"
-              style={{ width: "100%", padding: "8px", margin: "5px 0" }}
             />
 
             <input
@@ -80,7 +88,6 @@ const UserProfilePage = () => {
               value={formData.phone}
               onChange={handleChange}
               placeholder="Phone"
-              style={{ width: "100%", padding: "8px", margin: "5px 0" }}
             />
 
             <input
@@ -88,47 +95,27 @@ const UserProfilePage = () => {
               value={formData.area}
               onChange={handleChange}
               placeholder="Area"
-              style={{ width: "100%", padding: "8px", margin: "5px 0" }}
             />
 
-            <button style={{ padding: "10px", marginTop: "10px", width: "100%" }}>
-              Update Profile
-            </button>
+            <button className="update-btn">Update Profile</button>
           </form>
 
-          <button
-            onClick={handleDelete}
-            style={{
-              marginTop: "20px",
-              padding: "10px",
-              width: "100%",
-              background: "red",
-              color: "white",
-              border: "none",
-            }}
-          >
+          <button className="delete-btn" onClick={handleDelete}>
             Delete Account
           </button>
         </section>
 
         {/* User Reports */}
-        <section style={{ marginTop: "40px" }}>
+        <section className="reports-section">
           <h2>Your Reports</h2>
 
-          {reports.length === 0 && <p>No reports yet.</p>}
+          {reports.length === 0 && <p className="no-reports">No reports yet.</p>}
 
           {reports.map((r) => (
-            <div
-              key={r._id}
-              style={{
-                border: "1px solid #ddd",
-                padding: "15px",
-                marginBottom: "10px",
-              }}
-            >
+            <div key={r._id} className="report-card">
               <h3>{r.title}</h3>
-              <p>Type: {r.type}</p>
-              <p>Status: {r.status}</p>
+              <p><strong>Type:</strong> {r.type}</p>
+              <p><strong>Status:</strong> {r.status}</p>
             </div>
           ))}
         </section>

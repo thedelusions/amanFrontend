@@ -5,7 +5,6 @@ import { UserContext } from '../../contexts/UserContext';
 import './NavBar.css';
 
 const NavBar = () => {
-
   const { user, setUser } = useContext(UserContext);
 
   const handleSignOut = () => {
@@ -16,29 +15,28 @@ const NavBar = () => {
   return (
     <nav className="navbar">
       <div className="nav-container">
-        <Link to='/' className="nav-logo">Aman</Link>
+        {/* Brand logo */}
+        <Link to={user ? '/home' : '/'} className="nav-logo">
+          Aman
+        </Link>
 
         {user ? (
           <ul className="nav-menu">
-            <li><Link to='/home'>Home</Link></li>
-            <li><Link to='/reports'>Reports</Link></li>
-            <li><Link to='/community'>Community</Link></li>
-
-            {/* NEW: Profile link */}
-            <li><Link to='/profile'>Profile</Link></li>
-
-            {/* OPTIONAL: Only if user is admin */}
-            {user?.isAdmin && (
-              <li><Link to='/admin'>Admin</Link></li>
-            )}
-
-            <li><Link to='/' onClick={handleSignOut}>Sign Out</Link></li>
+            <li><Link to="/home">Home</Link></li>
+            <li><Link to="/reports">Reports</Link></li>
+            <li><Link to="/community">Community</Link></li>
+            <li><Link to="/profile">Profile</Link></li>
+            <li>
+              <Link to="/" onClick={handleSignOut}>
+                Sign Out
+              </Link>
+            </li>
           </ul>
         ) : (
           <ul className="nav-menu">
-            <li><Link to='/community'>Community</Link></li>
-            <li><Link to='/sign-up'>Sign Up</Link></li>
-            <li><Link to='/sign-in'>Sign In</Link></li>
+            <li><Link to="/community">Community</Link></li>
+            <li><Link to="/sign-up">Sign Up</Link></li>
+            <li><Link to="/sign-in">Sign In</Link></li>
           </ul>
         )}
       </div>
