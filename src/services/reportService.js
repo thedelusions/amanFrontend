@@ -35,7 +35,7 @@ export const deleteReport = async (reportId) => {
   return res.json();
 };
 
-const getComments = async (reportId) => {
+export const getComments = async (reportId) => {
   try {
     const token = localStorage.getItem('token');
     const res = await fetch(`${import.meta.env.VITE_BACK_END_SERVER_URL}/comments/${reportId}`, {
@@ -48,5 +48,3 @@ const getComments = async (reportId) => {
     console.log(err);
   }
 };
-
-export { index, show, create, update, deleteReport, getComments };
