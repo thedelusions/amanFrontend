@@ -5,7 +5,7 @@ import * as reportService from "../../services/reportService";
 import * as userService from "../../services/userService";
 
 import Footer from "../Footer/Footer";
-import "./UserProfilePage.css"; 
+import "./UserProfilePage.css";
 
 const UserProfilePage = () => {
   const { user } = useContext(UserContext);
@@ -19,7 +19,6 @@ const UserProfilePage = () => {
     area: user?.area || "",
   });
 
-  // Load only this user's reports
   useEffect(() => {
     if (!userId) return;
 
@@ -40,7 +39,6 @@ const UserProfilePage = () => {
 
   async function handleSubmit(e) {
     e.preventDefault();
-
     const updated = await userService.updateUser(userId, formData);
 
     if (updated.error) {
@@ -63,7 +61,8 @@ const UserProfilePage = () => {
       <main className="profile-container">
         <h1 className="profile-title">Your Profile</h1>
 
-        {/* Avatar UI */}
+        <p className="welcome-text">Welcome, <span>{formData.name}</span> 👋</p>
+
         <div className="profile-avatar">
           <img
             src="https://cdn-icons-png.flaticon.com/512/847/847969.png"
@@ -71,7 +70,6 @@ const UserProfilePage = () => {
           />
         </div>
 
-        {/* Profile Form */}
         <section className="profile-card">
           <h2>Edit Profile</h2>
 
@@ -105,11 +103,12 @@ const UserProfilePage = () => {
           </button>
         </section>
 
-        {/* User Reports */}
         <section className="reports-section">
           <h2>Your Reports</h2>
 
-          {reports.length === 0 && <p className="no-reports">No reports yet.</p>}
+          {reports.length === 0 && (
+            <p className="no-reports">No reports yet.</p>
+          )}
 
           {reports.map((r) => (
             <div key={r._id} className="report-card">

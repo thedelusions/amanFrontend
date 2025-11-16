@@ -1,14 +1,11 @@
+
+
 const Footer = () => {
   return (
-    <footer
-      style={{
-        marginTop: "40px",
-        padding: "20px",
-        background: "#f2f2f2",
-        textAlign: "center",
-      }}
-    >
-      <p>Aman © 2025</p>
+    <footer className="footer">
+      <div className="footer-inner">
+        <p>Aman © 2025 — Community Safety Platform</p>
+      </div>
     </footer>
   );
 };

@@ -1,4 +1,3 @@
-
 * {
   margin: 0;
   padding: 0;
@@ -74,7 +73,6 @@ textarea:focus {
   background-color: #ffffff;
 }
 
-/* Buttons */
 button {
   display: inline-block;
   width: 100%;
@@ -118,7 +116,6 @@ button.delete-btn:hover {
   box-shadow: 0 12px 28px rgba(34, 26, 22, 0.06);
 }
 
-
 .report-card {
   background-color: #ffffff;
   border-radius: 16px;
@@ -133,16 +130,26 @@ button.delete-btn:hover {
   color: #6f6862;
 }
 
-/* Footer */
-footer {
+.footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
   margin-top: 40px;
   padding: 20px 0;
+  background: transparent;
+}
+
+.footer-inner {
+  max-width: 1100px;
+  width: 100%;
+  border-top: 1px solid #e0ddd5;
   text-align: center;
   color: #6f6862;
   font-size: 14px;
-  border-top: 1px solid #e0ddd5;
+  padding-top: 12px;
+  margin: 0 auto;
 }
-/* PROFILE AVATAR */
+
 .profile-avatar {
   display: flex;
   justify-content: center;
@@ -159,5 +166,5 @@ footer {
   background-color: #fdfaf6;
 
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08),
-              0 4px 8px rgba(0, 0, 0, 0.04);
+    0 4px 8px rgba(0, 0, 0, 0.04);
 }
