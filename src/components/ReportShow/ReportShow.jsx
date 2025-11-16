@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../contexts/UserContext';
 import * as reportService from '../../services/reportService';
+import CommentForm from '../CommentForm/CommentForm';
 import './ReportShow.css';
 
 const ReportShow = () => {
@@ -34,6 +35,41 @@ const ReportShow = () => {
     
     fetchReport();
   }, [id]);
+
+  useEffect(() => {
+    const fetchReportComments = async () => {
+      try {
+        const data = await reportService.getComments(id);
+        console.log('Fetched comments:', data);
+        if (data.err) {
+          setError(data.err);
+        } else {
+          setReport((prevReport) => ({
+            ...prevReport,
+            comments: data,
+          }));
+        }
+      } catch (err) {
+        console.error('Fetch comments error:', err);
+        setError(err.message);
+      }
+    };
+
+    
+      fetchReportComments();
+    
+
+  }, [id]);
+
+  const handleCommentAdded = (comments) => {
+    setReport((prevReport) => ({
+      ...prevReport,
+      comments: comments,
+    }));
+  };
+
+  console.log('Report data:', report, 'Comments:', report?.comments);
+  
 
   if (loading) return <p className="loading">Loading report...</p>;
   if (error) return <p className="error-message">Error: {error}</p>;
@@ -77,6 +113,25 @@ const ReportShow = () => {
           <p>{report.description}</p>
         </div>
       </div>
+      <div className="comments-section">
+          <h2>Comments</h2>
+          
+          <CommentForm reportId={id} onCommentAdded={handleCommentAdded} />
+
+          {report.comments && report.comments.length > 0 ? (
+            <div className="comments-grid">
+              {report.comments.map((comment) => (
+                <div key={comment._id} className="comment">
+                  <p><strong>{comment.user_id?.name || 'Anonymous'}</strong></p>
+                  <p className="comment-text">{comment.comment_text}</p>
+                  <p className="comment-date">{comment.created_at}</p>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p>No comments available.</p>
+          )}
+        </div>
     </div>
   );
 };

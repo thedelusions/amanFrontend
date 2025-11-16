@@ -94,6 +94,62 @@
   line-height: 1.6;
 }
 
+.comments-section {
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid #eee;
+}
+
+.comments-section h2 {
+  color: #2c3e50;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.comments-grid {
+  display: grid;
+  gap: 15px;
+}
+
+.comment {
+  background: white;
+  border: 1px solid #e0e0e0;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease;
+}
+
+.comment:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.comment p {
+  margin: 0;
+  color: #555;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.comment strong {
+  color: #2c3e50;
+  font-size: 17px;
+}
+
+.comment-text {
+  margin: 10px 0 0 0;
+  color: #555;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.comment-date {
+  margin: 10px 0 0 0;
+  color: #999;
+  font-size: 14px;
+  font-style: italic;
+}
+
 .loading,
 .error-message {
   text-align: center;

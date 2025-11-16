@@ -35,6 +35,20 @@ export const deleteReport = async (reportId) => {
   return res.json();
 };
 
+export const getComments = async (reportId) => {
+  try {
+    const token = localStorage.getItem('token');
+    const res = await fetch(`${import.meta.env.VITE_BACK_END_SERVER_URL}/comments/${reportId}`, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    return await res.json();
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 export const getReportsByArea = async (area) => {
   try {
     const res = await fetch(`${BASE_URL}/area/${area}`, {
