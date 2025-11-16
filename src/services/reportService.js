@@ -61,7 +61,12 @@ const deleteReport = async (reportId) => {
 
 const getComments = async (reportId) => {
   try {
-    const res = await fetch(`${import.meta.env.VITE_BACK_END_SERVER_URL}/comments/${reportId}`);
+    const token = localStorage.getItem('token');
+    const res = await fetch(`${import.meta.env.VITE_BACK_END_SERVER_URL}/comments/${reportId}`, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
     return await res.json();
   } catch (err) {
     console.log(err);
