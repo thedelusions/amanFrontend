@@ -59,4 +59,13 @@ const deleteReport = async (reportId) => {
   }
 };
 
-export { index, show, create, update, deleteReport };
+const getComments = async (reportId) => {
+  try {
+    const res = await fetch(`${import.meta.env.VITE_BACK_END_SERVER_URL}/comments/${reportId}`);
+    return await res.json();
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export { index, show, create, update, deleteReport, getComments };
