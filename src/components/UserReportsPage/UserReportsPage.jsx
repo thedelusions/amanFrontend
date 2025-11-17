@@ -8,7 +8,6 @@ import "./UserReportsPage.css";
 const UserReportsPage = () => {
   const { user } = useContext(UserContext);
   const [reports, setReports] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchReports = async () => {
@@ -17,9 +16,7 @@ const UserReportsPage = () => {
         setReports(data);
       } catch (err) {
         console.log(err);
-      } finally {
-        setLoading(false);
-      }
+      } 
     };
 
     if (user) fetchReports();
@@ -47,7 +44,6 @@ const UserReportsPage = () => {
     }
   };
 
-  if (loading) return <p className="loading">Loading your reports...</p>;
   if (reports.length === 0) return <p className="no-reports">You have no reports yet.</p>;
 
   return (
