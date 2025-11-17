@@ -4,8 +4,6 @@ import { UserContext } from "../../contexts/UserContext";
 import * as reportService from "../../services/reportService";
 import * as userService from "../../services/userService";
 
-import Footer from "../Footer/Footer";
-
 import "./UserProfilePage.css";
 
 const UserProfilePage = () => {
@@ -20,7 +18,6 @@ const UserProfilePage = () => {
     area: user?.area || "",
   });
 
-
   useEffect(() => {
     if (!userId) return;
 
@@ -34,8 +31,6 @@ const UserProfilePage = () => {
 
     loadReports();
   }, [userId]);
-
-
 
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -64,18 +59,15 @@ const UserProfilePage = () => {
     window.location.href = "/";
   };
 
-
   return (
     <>
       <main className="profile-container">
 
-        {}
         <header className="profile-header">
           <h1>Your Profile</h1>
           <p className="welcome-text">Welcome, {formData.name || "User"} 👋</p>
         </header>
 
-        {/* Avatar */}
         <div className="profile-avatar">
           <img
             src="https://cdn-icons-png.flaticon.com/512/847/847969.png"
@@ -83,7 +75,6 @@ const UserProfilePage = () => {
           />
         </div>
 
-        {}
         <section className="profile-card">
           <h2>Edit Profile</h2>
 
@@ -116,8 +107,6 @@ const UserProfilePage = () => {
         </section>
 
       </main>
-
-      <Footer />
     </>
   );
 };
