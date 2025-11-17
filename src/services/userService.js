@@ -29,3 +29,21 @@ export const deleteUser = async (userId) => {
   });
   return res.json();
 };
+
+export const getUserReports = async (userId) => {
+  try {
+    const token = localStorage.getItem("token");
+    const res = await fetch(
+      `${import.meta.env.VITE_BACK_END_SERVER_URL}/users/${userId}/reports?t=${Date.now()}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return await res.json();
+  } catch (err) {
+    console.log("Error fetching user reports:", err);
+  }
+};
+

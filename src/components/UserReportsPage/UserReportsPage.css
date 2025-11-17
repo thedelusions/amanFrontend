@@ -1,0 +1,133 @@
+.reports-container {
+  padding: 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.reports-container h2 {
+  text-align: center;
+  margin-bottom: 50px;
+  color: #333;
+  font-size: 48px;
+}
+
+.reports-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.report-card {
+  background: white;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 320px; /* ensures all cards are the same height */
+}
+
+.report-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.report-card h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #2c3e50;
+  font-size: 26px;
+}
+
+.report-card p {
+  margin: 10px 0;
+  color: #555;
+  font-size: 18px;
+}
+
+.report-description {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+  color: #666;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  line-height: 1.4;
+  min-height: 48px; /* ensures uniform height for 2 lines */
+}
+
+.status-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.report-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.edit-report-btn,
+.delete-report-btn {
+  flex: 1; /* same width */
+  text-align: center;
+  padding: 10px 0;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Light grey edit button */
+.edit-report-btn {
+  background-color: #d3d3d3;
+  color: #333;
+  text-decoration: none;
+}
+
+.edit-report-btn:hover {
+  background-color: #bcbcbc;
+}
+
+/* Dark red delete button */
+.delete-report-btn {
+  background-color: #c0392b;
+  color: white;
+}
+
+.delete-report-btn:hover {
+  background-color: #992323;
+}
+
+.no-reports,
+.loading {
+  text-align: center;
+  color: #999;
+  font-size: 18px;
+  padding: 40px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .reports-grid {
+    grid-template-columns: 50% 50%;
+  }
+}
+
+@media (max-width: 576px) {
+  .reports-grid {
+    grid-template-columns: 100%;
+  }
+}
