@@ -11,7 +11,6 @@ export const index = async () => {
          "Cache-Control": "no-cache",
       }
     });
-    if (!res.ok) throw new Error('Failed to fetch admin reports');
     return await res.json();
   } catch (err) {
     console.error('Error in index():', err);
@@ -23,7 +22,6 @@ export const index = async () => {
 export const getApprovedReports = async () => {
   try {
     const res = await fetch(`${import.meta.env.VITE_BACK_END_SERVER_URL}/reports/`);
-    if (!res.ok) throw new Error('Failed to fetch approved reports');
     return await res.json();
   } catch (err) {
     console.error('Error in getApprovedReports():', err);
@@ -41,7 +39,6 @@ export const show = async (reportId) => {
         "Authorization": `Bearer ${token}`
       }
     });
-    if (!res.ok) throw new Error('Failed to fetch report');
     return await res.json();
   } catch (err) {
     console.error('Error in show():', err);
@@ -60,7 +57,6 @@ export const create = async (formData) => {
       },
       body: JSON.stringify(formData)
     });
-    if (!res.ok) throw new Error('Failed to create report');
     return await res.json();
   } catch (err) {
     console.error('Error in create():', err);
@@ -79,7 +75,6 @@ export const update = async (reportId, formData) => {
       },
       body: JSON.stringify(formData)
     });
-    if (!res.ok) throw new Error('Failed to update report');
     return await res.json();
   } catch (err) {
     console.error('Error in update():', err);
@@ -89,7 +84,7 @@ export const update = async (reportId, formData) => {
 // Delete a report
 export const deleteReport = async (reportId) => {
   const token = localStorage.getItem('token');
-  const res = await fetch(`${BASE_URL}/${reportId}`, {
+  const res = await fetch(`${BASE_URL}/reports/${reportId}`, {
     method: "DELETE",
     headers: {
       "Authorization": `Bearer ${token}`
@@ -108,7 +103,6 @@ export const getReportsByArea = async (area) => {
         "Authorization": `Bearer ${token}`
       }
     });
-    if (!res.ok) throw new Error('Failed to fetch reports by area');
     return await res.json();
   } catch (err) {
     console.error('Error in getReportsByArea():', err);
@@ -123,7 +117,6 @@ export const getComments = async (reportId) => {
     const res = await fetch(`${BASE_URL}/comments/${reportId}`, {
       headers: { "Authorization": `Bearer ${token}` }
     });
-    if (!res.ok) throw new Error('Failed to fetch comments');
     return await res.json();
   } catch (err) {
     console.error('Error in getComments():', err);
@@ -142,7 +135,6 @@ export const addComment = async (reportId, commentText) => {
       },
       body: JSON.stringify({ report_id: reportId, comment_text: commentText })
     });
-    if (!res.ok) throw new Error('Failed to add comment');
     return await getComments(reportId);
   } catch (err) {
     console.error('Error in addComment():', err);

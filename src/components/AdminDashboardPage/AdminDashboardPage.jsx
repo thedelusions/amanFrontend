@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import * as reportService from "../../services/reportService";
+import Footer from "../Footer/Footer";
+import { useNavigate } from 'react-router-dom';
+import './AdminDashboardPage.css'
 
 const AdminDashboardPage = () => {
   const [reports, setReports] = useState([]);
   const [filter, setFilter] = useState("all");
+  const navigate = useNavigate();
 
 
   useEffect(() => {
@@ -41,6 +45,8 @@ const AdminDashboardPage = () => {
       : reports.filter((r) => r.type === filter.toLowerCase());
 
   return (
+    <>
+    <main className="main">
     <main className="main-container">
       <header>
         <h1>Admin Dashboard</h1>
@@ -96,11 +102,20 @@ const AdminDashboardPage = () => {
               >
                 Reject
               </button>
+              <button
+                onClick={() => navigate(`/reports/${r._id}`)}
+                className="view-btn"
+              >
+                View Report
+              </button>
             </div>
           </div>
         ))}
       </section>
     </main>
+    </main>
+        <Footer />
+    </>
   );
 };
 

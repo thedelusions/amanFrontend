@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import * as reportService from '../../services/reportService';
+import Footer from '../Footer/Footer';
 import areasFile from '../../data/bh.json';
 import './CreateReport.css';
 
@@ -30,8 +31,9 @@ const CreateReport = () => {
   };
 
   return (
+    <>
+    <main className='main'>
     <main className="create-report-container">
-
     <header>
       <h1>Create a Report</h1>
       <p>Fill in the details to submit a new report.</p>
@@ -85,8 +87,7 @@ const CreateReport = () => {
             name="area"
             value={formData.area}
             onChange={handleChange}
-            required
-          >
+            required >
             {areas.map(city => (
               <option key={city} value={city}>{city}</option>
             ))}
@@ -96,9 +97,11 @@ const CreateReport = () => {
         <button type="submit" >
             Create 
         </button>
-  
         </form>
         </main>
+        </main>
+            <Footer />
+    </>
   );
 };
 

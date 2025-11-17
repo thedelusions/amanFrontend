@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import * as userService from "../../services/userService";
 import * as reportService from "../../services/reportService";
+import Footer from "../Footer/Footer";
 import { Link } from "react-router-dom";
 import "./UserReportsPage.css";
 
@@ -16,7 +17,7 @@ const UserReportsPage = () => {
         setReports(data);
       } catch (err) {
         console.log(err);
-      } 
+      }
     };
 
     if (user) fetchReports();
@@ -44,36 +45,58 @@ const UserReportsPage = () => {
     }
   };
 
-  if (reports.length === 0) return <p className="no-reports">You have no reports yet.</p>;
+  // If no reports, show a message with a button
+  if (reports.length === 0) {
+    return (
+      <div className="no-reports-container">
+        <p className="no-reports-text">You have no reports yet.</p>
+        <Link to="/reports/create" className="start-report-btn">
+          Start Reporting What's Around
+        </Link>
+      </div>
+    );
+  }
 
   return (
+    <>
+    <main className="main">
     <div className="reports-container">
       <h2>My Reports</h2>
+      <p className="reports-description">
+        Here you can view all the reports you've submitted, check their status, and manage them.
+      </p>
 
       <div className="reports-grid">
         {reports.map((report) => (
           <div key={report._id} className="report-card">
-
-            <div className="status-badge" style={{ backgroundColor: getStatusColor(report.status) }}>
+            <div
+              className="status-badge"
+              style={{ backgroundColor: getStatusColor(report.status) }}
+            >
               {report.status}
             </div>
-
             <h3>{report.title}</h3>
             <p className="report-description">{report.description}</p>
             <p><strong>Type:</strong> {report.type}</p>
             <p><strong>Area:</strong> {report.area}</p>
-
             <div className="report-actions">
-              <Link to={`/reports/${report._id}/edit`} className="edit-report-btn">Edit</Link>
-              <button className="delete-report-btn" onClick={() => handleDelete(report._id)}>
+              <Link to={`/reports/${report._id}/edit`} className="edit-report-btn">
+                Edit
+              </Link>
+              <button
+                className="delete-report-btn"
+                onClick={() => handleDelete(report._id)}
+              >
                 Delete
               </button>
             </div>
-
           </div>
         ))}
       </div>
     </div>
+    </main>
+        <Footer />
+    </>
   );
 };
 

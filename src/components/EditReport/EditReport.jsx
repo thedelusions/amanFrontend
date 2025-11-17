@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import * as reportService from '../../services/reportService';
+import Footer from '../Footer/Footer';
 import areasFile from '../../data/bh.json';
 import '../CreateReport/CreateReport.css';
 
@@ -14,7 +15,7 @@ const EditReport = () => {
     type: '',
     description: '',
     area: areas[0],
-    status: 'pending', // include status in state
+    status: 'pending',
   });
 
   useEffect(() => {
@@ -26,8 +27,8 @@ const EditReport = () => {
           type: data.type,
           description: data.description,
           area: data.area,
-          status: data.status, // keep the current status
-        });
+          status: data.status, 
+          });
       } catch (error) {
         console.log(error);
       }
@@ -43,7 +44,7 @@ const EditReport = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Reset status to pending if it was approved/rejected
+      // Reset status to pending if it was edited again
       const updatedForm = { ...formData };
       if (formData.status === 'approved' || formData.status === 'rejected') {
         updatedForm.status = 'pending';
@@ -51,12 +52,15 @@ const EditReport = () => {
 
       await reportService.update(id, updatedForm);
       navigate('/my-reports');
+
     } catch (error) {
       console.log(error);
     }
   };
 
   return (
+    <>
+    <main className='main'>
     <main className="create-report-container">
       <header>
         <h1>Edit Report</h1>
@@ -72,8 +76,7 @@ const EditReport = () => {
             name="title"
             value={formData.title}
             onChange={handleChange}
-            required
-          />
+            required />
         </div>
 
         <div>
@@ -83,8 +86,7 @@ const EditReport = () => {
             name="type"
             value={formData.type}
             onChange={handleChange}
-            required
-          >
+            required >
             <option value="suspicious">Suspicious</option>
             <option value="lost">Lost</option>
             <option value="found">Found</option>
@@ -99,8 +101,7 @@ const EditReport = () => {
             name="description"
             value={formData.description}
             onChange={handleChange}
-            required
-          />
+            required />
         </div>
 
         <div>
@@ -110,8 +111,7 @@ const EditReport = () => {
             name="area"
             value={formData.area}
             onChange={handleChange}
-            required
-          >
+            required >
             {areas.map((city) => (
               <option key={city} value={city}>
                 {city}
@@ -123,6 +123,9 @@ const EditReport = () => {
         <button type="submit">Update</button>
       </form>
     </main>
+    </main>
+        <Footer />
+    </>
   );
 };
 

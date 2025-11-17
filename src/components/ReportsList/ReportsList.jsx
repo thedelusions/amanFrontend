@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as reportService from '../../services/reportService';
 import areasFile from '../../data/bh.json';
+import Footer from '../Footer/Footer';
 import './ReportsList.css';
 
 const ReportsList = () => {
@@ -46,6 +47,7 @@ const ReportsList = () => {
       filtered = filtered.filter(r => r.area === areaFilter);
     }
 
+    //check the whole or part of what's written
     if (searchTerm.trim() !== '') {
       const term = searchTerm.toLowerCase();
       filtered = filtered.filter(
@@ -71,6 +73,8 @@ const ReportsList = () => {
   if (error) return <p className="error-message">Error: {error}</p>;
 
   return (
+    <>
+    <main className='main'>
     <div className="reports-container">
       <header>
         <h2>Community Reports</h2>
@@ -100,7 +104,7 @@ const ReportsList = () => {
           ))}
         </select>
       </section>
-
+     
       {filteredReports.length === 0 ? (
         <p className="no-reports">No reports found.</p>
       ) : (
@@ -123,6 +127,9 @@ const ReportsList = () => {
         </ul>
       )}
     </div>
+    </main>
+    < Footer />
+    </>
   );
 };
 

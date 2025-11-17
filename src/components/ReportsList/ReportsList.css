@@ -1,111 +1,197 @@
+@keyframes fadeInUp {
+  0% { 
+    opacity: 0; 
+    transform: translateY(30px); 
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+.main {
+  background: linear-gradient(135deg, #E8D8C4 0%, #C7B7A3 100%);
+  margin-top: -5px;
+}
+
 .reports-container {
-  padding: 40px;
-  max-width: 1400px;
-  margin: 0 auto;
+  max-width: 1100px;
+  margin: 2rem auto 4rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.1s;
+}
+
+.reports-container header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.2s;
 }
 
 .reports-container h2 {
-  text-align: center;
-  margin-bottom: 50px;
-  color: #333;
-  font-size: 48px;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  color: #561C24;
+}
+
+.reports-container p {
+  color: #6D2932;
+  font-size: 1rem;
+}
+
+.reports-card:hover{
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 7px 20px rgba(0,0,0,0.18);
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.3s;
+}
+
+.filters input,
+.filters select {
+  padding: 0.7rem 1rem;
+  border-radius: 12px;
+  border: 1px solid #C7B7A3;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+}
+
+.filters input:nth-child(1),
+.filters select:nth-child(1) { animation-delay: 0.35s; }
+
+.filters input:nth-child(2),
+.filters select:nth-child(2) { animation-delay: 0.45s; }
+
+.filters input:nth-child(3),
+.filters select:nth-child(3) { animation-delay: 0.55s; }
+
+.filters input:nth-child(4),
+.filters select:nth-child(4) { animation-delay: 0.65s; }
+
+.filters input:focus,
+.filters select:focus {
+  border-color: #561C24;
+  box-shadow: 0 5px 15px rgba(86,28,36,0.15);
+}
+
+.filters input:hover,
+.filters select:hover {
+  transform: scale(1.02);
+  box-shadow: 0 7px 20px rgba(0,0,0,0.18);
 }
 
 .reports-grid {
   display: grid;
-
-  /*show 3 reports*/
-  grid-template-columns: repeat(3, 1fr);
-
-  gap: 30px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
 }
 
 .report-card {
-  background: white;
-  border-radius: 8px;
-  padding: 30px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: rgba(255,255,255,0.55);
+  border: 1px solid rgba(255,255,255,0.35);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 1.8rem;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.18);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  transition: all 0.3s ease;
+  min-height: 300px;
+
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
 }
 
-.report-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+.report-card:nth-child(1) { animation-delay: 0.3s; }
+.report-card:nth-child(2) { animation-delay: 0.45s; }
+.report-card:nth-child(3) { animation-delay: 0.6s; }
+.report-card:nth-child(4) { animation-delay: 0.75s; }
+.report-card:nth-child(5) { animation-delay: 0.9s; }
+
+.report-card .field {
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.6s;
 }
 
-.report-card h3 {
-  margin-top: 0;
-  margin-bottom: 20px;
-  color: #2c3e50;
-  font-size: 26px;
+.report-card .field:nth-child(2) { animation-delay: 0.8s; }
+.report-card .field:nth-child(3) { animation-delay: 1s; }
+
+
+.report-card h3,
+.report-card p strong {
+  font-size: 1rem;
+  color: #561C24;
 }
 
-.report-card p {
-  margin: 10px 0;
-  color: #555;
-  font-size: 18px;
-}
-
-.report-description{
-  margin-top: 15px;
-  padding-top: 15px;
-  border-top: 1px solid #eee;
-  color: #666;
-
-  /*limit the description to 1 lines  (for consistent layout)*/
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  max-height: 72px;
-  /*this to make sure all cards have the same height and the button don't be in different positions*/
+.report-description {
+  font-size: 0.95rem;
+  color: #6D2932;
 }
 
 .view-report-btn {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 12px 24px;
-  background-color: #6334db;
-  color: white;
+  margin-top: auto;
+  padding: 0.7rem 1.2rem;
+  border-radius: 12px;
+  font-weight: 500;
   border: none;
-  border-radius: 6px;
-  font-size: 16px;
   cursor: pointer;
-  text-decoration: none;
-  align-items: center;
+  background: #561C24;
+  color: #fff;
+  transition: all 0.3s ease;
 }
 
 .view-report-btn:hover {
-  background-color: #6c29b9;
+  background: #6D2932;
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 7px 20px rgba(0,0,0,0.18);
 }
 
-.no-reports {
-  text-align: center;
-  color: #999;
-  font-size: 18px;
-  padding: 40px;
-}
-
-.loading, .error-message {
-  text-align: center;
-  padding: 40px;
-  font-size: 18px;
-}
-
+.no-reports,
+.loading,
 .error-message {
-  color: #e74c3c;
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.1rem;
+  color: #6D2932;
+
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.2s;
 }
-/*for mobile users:*/
-@media (max-width: 992px) {
+
+.no-reports{
+  height: 100vh;
+}
+
+@media (max-width: 1024px) {
   .reports-grid {
-    grid-template-columns: 50% 50%;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 768px) {
   .reports-grid {
-    grid-template-columns: 100%;
+    grid-template-columns: 1fr;
   }
 }

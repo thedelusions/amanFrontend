@@ -54,8 +54,6 @@ const App = () => {
         <Route path="/admin" element={<AdminDashboardPage />} />
         <Route path="/about" element={<AboutSafety />} />
       </Routes>
-
-      <Footer />
     </>
   );
 };

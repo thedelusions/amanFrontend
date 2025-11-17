@@ -1,41 +1,101 @@
 .navbar {
-  background: white;
-  border-bottom: 2px solid #e2f5f1;
-  padding: 0;
-}
-
-.nav-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 24px 40px;
+  width: 100%;
+  background: transparent;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.nav-logo {
-  font-size: 34px;
-  font-weight: 600;
-  color: #2c4a4a;
-  text-decoration: none;
-}
-
 .nav-menu {
-  display: flex;
   list-style: none;
-  gap: 30px;
+  display: flex;
+  gap: 1.8rem;
 }
 
 .nav-menu li a {
   text-decoration: none;
-  font-size: 18px;
-  color: #4b7b79;
-  padding-bottom: 4px;
-  transition: 0.2s ease;
+  color: var(--plum-wine);
+  font-weight: 500;
+  transition: all 0.3s ease;
 }
 
 .nav-menu li a:hover {
-  color: #2c4a4a;
-  border-bottom: 2px solid #7bcac2;
+  color: var(--carbon-powder);
+  transform: translateY(-2px);
 }
 
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--plum-wine);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.nav-logo:hover {
+  color: var(--carbon-powder);
+  transform: translateY(-2px);
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.hamburger div {
+  width: 28px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--plum-wine);
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .nav-menu {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    background: #FDF7F0;
+    padding: 1rem 0;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+    transform: translateY(-20px);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+
+  .nav-menu.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-menu li {
+    margin: 0.8rem 0;
+    text-align: center;
+  }
+
+  .hamburger {
+    display: flex;
+    background-color: transparent;
+  }
+
+  .hamburger.active div:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .hamburger.active div:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active div:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+}

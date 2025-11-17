@@ -1,7 +1,8 @@
 import "./AboutSafety.css";
-
+import Footer from "../Footer/Footer";
 const AboutSafety = () => {
   return (
+    <>
     <main className="about-wrapper">
 
       <section className="top-row">
@@ -98,9 +99,9 @@ const AboutSafety = () => {
           </div>
         </div>
       </section>
-
     </main>
+        <Footer />
+    </>
   );
 };
-
 export default AboutSafety;

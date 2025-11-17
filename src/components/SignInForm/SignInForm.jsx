@@ -1,9 +1,9 @@
-// src/components/SignInForm/SignInForm.jsx
 
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router';
 import { signIn } from '../../services/authService';
 import { UserContext } from '../../contexts/UserContext';
+import Footer from '../Footer/Footer';
 import './SignInForm.css';
 
 const SignInForm = () => {
@@ -33,6 +33,8 @@ const SignInForm = () => {
   };
 
   return (
+    <>
+    <main className='main'>
     <main className="form-container">
       <div className="form-wrapper">
         <h1>Sign In</h1>
@@ -67,6 +69,9 @@ const SignInForm = () => {
         </form>
       </div>
     </main>
+    </main>
+    <Footer />
+    </>
   );
 };
 

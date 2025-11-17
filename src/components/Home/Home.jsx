@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../contexts/UserContext';
 import * as reportService from '../../services/reportService';
 import { useNavigate } from 'react-router';
+import Footer from '../Footer/Footer';
 import './Home.css';
 
 const Home = () => {
@@ -15,7 +16,6 @@ const Home = () => {
         if (user?.area) {
           const data = await reportService.getReportsByArea(user.area);
           setReports(data || []);
-          console.log('Reports fetched for area:', user.area, data);
         }
       } catch (err) {
         console.error('Error fetching reports:', err);
@@ -32,8 +32,9 @@ const Home = () => {
   const foundCount = reports.filter(r => r.type === 'found').length;
 
   return (
+    <>
     <div className="home-container">
-      <section className="hero-section">
+        <section className="hero-section">
         <h1>Aman</h1>
         <p className="hero-subtitle">Community Watch & Lost & Found</p>
         <p className="welcome-user">Welcome back, {user?.name}</p>
@@ -42,25 +43,27 @@ const Home = () => {
           <button onClick={() => navigate('/community')}>View Community</button>
           <button onClick={() => navigate('/reports/create')}>Add a Report</button>
         </div>
-      </section>
+        </section>
 
       <section className="features-section">
         <div className="features-grid">
-          <div className="feature-card">
+            <div className="feature-card">
             <h3>Safety Alerts</h3>
             <p>{suspiciousCount} suspicious reports in {user?.area}</p>
-          </div>
-          <div className="feature-card">
+            </div>
+            <div className="feature-card">
             <h3>Lost Items</h3>
-            <p>{lostCount} items are lost in {user?.area}</p>
-          </div>
-          <div className="feature-card">
+            <p>{lostCount} items are lost in your area </p>
+            </div>
+            <div className="feature-card">
             <h3>Found Items</h3>
-            <p>{foundCount} found items in {user?.area}</p>
-          </div>
+            <p>There are {foundCount} found items within your area </p>
+            </div>
         </div>
       </section>
     </div>
+        <Footer />
+    </>
   );
 };
 
