@@ -18,6 +18,7 @@ import AdminDashboardPage from "./components/AdminDashboardPage/AdminDashboardPa
 import CreateReport from "./components/CreateReport/CreateReport";
 import EditReport from "./components/EditReport/EditReport";
 
+import UserReportsPage from "./components/UserReportsPage/UserReportsPage";
 const App = () => {
   const { user } = useContext(UserContext);
 
@@ -32,7 +33,7 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/reports" element={<ReportsList />} />
             <Route path="/reports/:id" element={<ReportShow />} />
-            <Route path="/user-reports" element={<UserReports />} />
+            <Route path="/my-reports" element={<UserReportsPage />} />
             <Route path="/profile" element={<UserProfilePage />} />
             <Route path="/reports/create" element={<CreateReport />} />
             <Route path="/reports/:id/edit" element={<EditReport />} />

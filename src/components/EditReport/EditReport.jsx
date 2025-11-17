@@ -6,7 +6,6 @@ import '../CreateReport/CreateReport.css';
 
 const EditReport = () => {
   const navigate = useNavigate();
-  //to get the report id 
   const { id } = useParams();
   const areas = areasFile.map(a => a.city);
 
@@ -14,7 +13,8 @@ const EditReport = () => {
     title: '',
     type: '',
     description: '',
-    area: areas[0]
+    area: areas[0],
+    status: 'pending', // include status in state
   });
 
   useEffect(() => {
@@ -25,7 +25,8 @@ const EditReport = () => {
           title: data.title,
           type: data.type,
           description: data.description,
-          area: data.area
+          area: data.area,
+          status: data.status, // keep the current status
         });
       } catch (error) {
         console.log(error);
@@ -42,8 +43,14 @@ const EditReport = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await reportService.update(id, formData);
-      navigate('/user-reports');
+      // Reset status to pending if it was approved/rejected
+      const updatedForm = { ...formData };
+      if (formData.status === 'approved' || formData.status === 'rejected') {
+        updatedForm.status = 'pending';
+      }
+
+      await reportService.update(id, updatedForm);
+      navigate('/my-reports');
     } catch (error) {
       console.log(error);
     }
@@ -76,8 +83,8 @@ const EditReport = () => {
             name="type"
             value={formData.type}
             onChange={handleChange}
-            required>
-
+            required
+          >
             <option value="suspicious">Suspicious</option>
             <option value="lost">Lost</option>
             <option value="found">Found</option>
@@ -94,9 +101,9 @@ const EditReport = () => {
             onChange={handleChange}
             required
           />
-           </div>
+        </div>
 
-          <div>
+        <div>
           <label htmlFor="area">Area:</label>
           <select
             id="area"
@@ -105,17 +112,17 @@ const EditReport = () => {
             onChange={handleChange}
             required
           >
-            {areas.map(city => (
-              <option key={city} value={city}>{city}</option>
+            {areas.map((city) => (
+              <option key={city} value={city}>
+                {city}
+              </option>
             ))}
           </select>
         </div>
 
-        <button type="submit">
-          Update
-        </button>
-           </form>
-             </main>
+        <button type="submit">Update</button>
+      </form>
+    </main>
   );
 };
 

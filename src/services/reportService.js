@@ -19,7 +19,7 @@ export const index = async () => {
   }
 };
 
-// Fetch a single report by ID
+// single report by ID
 export const show = async (reportId) => {
   try {
     const token = localStorage.getItem('token');
@@ -55,7 +55,7 @@ export const create = async (formData) => {
   }
 };
 
-// Update a report by ID
+// Update a report
 export const update = async (reportId, formData) => {
   try {
     const token = localStorage.getItem('token');
@@ -91,7 +91,7 @@ export const deleteReport = async (reportId) => {
   }
 };
 
-// Fetch reports by area
+//get reports by area
 export const getReportsByArea = async (area) => {
   try {
     const token = localStorage.getItem('token');
@@ -109,7 +109,7 @@ export const getReportsByArea = async (area) => {
   }
 };
 
-// Fetch comments for a report
+// comments for a report
 export const getComments = async (reportId) => {
   try {
     const token = localStorage.getItem('token');
