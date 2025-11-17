@@ -6,6 +6,7 @@ const AboutSafety = () => {
 
       <section className="top-row">
         <div className="about-box">
+
           <div className="about-text">
             <h1>About Aman</h1>
             <p>
@@ -55,6 +56,45 @@ const AboutSafety = () => {
             <img src="https://cdn-icons-png.flaticon.com/512/733/733411.png" alt="Connection" />
             <h3>Connection</h3>
             <p>We strengthen local bonds through unity, kindness, and shared support.</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="tips-section">
+        <h2>Safety Tips</h2>
+
+        <div className="tips-grid">
+          <div className="tip-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/2557/2557108.png" alt="Stay Alert" />
+            <h4>Stay Alert</h4>
+            <p>Notice unusual movement or vehicles in your area.</p>
+          </div>
+
+          <div className="tip-card">
+            <img 
+              src="https://static.vecteezy.com/system/resources/previews/030/380/871/non_2x/home-security-icon-vector.jpg" 
+              alt="Secure Home" 
+            />
+            <h4>Secure Your Home</h4>
+            <p>Lock doors and windows to keep your home protected.</p>
+          </div>
+
+          <div className="tip-card">
+            <img 
+              src="https://cdn3d.iconscout.com/3d/premium/thumb/pet-protection-3d-icon-png-download-12685957.png" 
+              alt="Protect Pets"
+            />
+            <h4>Protect Pets</h4>
+            <p>Keep pets tagged, collared, and safe outdoors.</p>
+          </div>
+
+          <div className="tip-card">
+            <img 
+              src="https://cdn-icons-png.flaticon.com/512/17871/17871683.png" 
+              alt="Report Clearly" 
+            />
+            <h4>Report Clearly</h4>
+            <p>Share accurate details without assumptions.</p>
           </div>
         </div>
       </section>

@@ -121,8 +121,32 @@
   margin-bottom: 12px;
 }
 
-.value-card h3 {
-  font-family: "Playfair Display", serif;
-  font-size: 1.3rem;
-  margin-bottom: 8px;
+.tips-section {
+  margin-top: 70px;
+}
+
+.tips-grid {
+  margin-top: 25px;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.tip-card {
+  padding: 22px;
+  border-radius: 18px;
+  text-align: center;
+  background: linear-gradient(160deg, #fffefd, #f5efe7);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+  transition: 0.2s ease;
+}
+
+.tip-card:hover {
+  transform: translateY(-6px);
+}
+
+.tip-card img {
+  width: 55px;
+  height: 55px;
+  margin-bottom: 10px;
 }
