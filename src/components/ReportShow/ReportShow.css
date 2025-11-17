@@ -33,6 +33,56 @@
   font-size: 48px;
 }
 
+.action-buttons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 30px;
+  align-items: center;
+}
+
+.action-buttons .update-btn,
+.action-buttons .delete-btn {
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  width: 100px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+.action-buttons .update-btn:disabled,
+.action-buttons .delete-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.action-buttons .update-btn {
+  background-color: #7746cb !important;
+  color: white;
+}
+
+.action-buttons .update-btn:hover {
+  background-color: #482083 !important;
+}
+
+.action-buttons .delete-btn {
+  background-color: #c0392b !important;
+  color: white;
+}
+
+.action-buttons .delete-btn:hover {
+  background-color: #8c2319 !important;
+}
+
 .report-details {
   margin-bottom: 40px;
   padding-bottom: 30px;

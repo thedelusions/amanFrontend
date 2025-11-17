@@ -88,19 +88,14 @@ export const update = async (reportId, formData) => {
 
 // Delete a report
 export const deleteReport = async (reportId) => {
-  try {
-    const token = localStorage.getItem('token');
-    const res = await fetch(`${BASE_URL}/reports/${reportId}`, {
-      method: "DELETE",
-      headers: { 
-        "Authorization": `Bearer ${token}`
-      }
-    });
-    if (!res.ok) throw new Error('Failed to delete report');
-    return await res.json();
-  } catch (err) {
-    console.error('Error in deleteReport():', err);
-  }
+  const token = localStorage.getItem('token');
+  const res = await fetch(`${BASE_URL}/${reportId}`, {
+    method: "DELETE",
+    headers: {
+      "Authorization": `Bearer ${token}`
+    }
+  });
+  return res.json();
 };
 
 //get reports by area
