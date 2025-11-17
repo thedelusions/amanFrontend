@@ -19,6 +19,18 @@ export const index = async () => {
   }
 };
 
+// user community approved feed 
+export const getApprovedReports = async () => {
+  try {
+    const res = await fetch(`${import.meta.env.VITE_BACK_END_SERVER_URL}/reports/`);
+    if (!res.ok) throw new Error('Failed to fetch approved reports');
+    return await res.json();
+  } catch (err) {
+    console.error('Error in getApprovedReports():', err);
+    return [];
+  }
+};
+
 // single report by ID
 export const show = async (reportId) => {
   try {
