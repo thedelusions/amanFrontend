@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import * as reportService from "../../services/reportService";
 import Footer from "../Footer/Footer";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import './AdminDashboardPage.css'
 
 const AdminDashboardPage = () => {
