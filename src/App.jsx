@@ -8,6 +8,7 @@ import Home from "./components/Home/Home";
 import ReportsList from "./components/ReportsList/ReportsList";
 import UserReports from "./components/UserReportsPage/UserReportsPage";
 import ReportShow from "./components/ReportShow/ReportShow";
+import AboutSafety from "./components/AboutSafety/AboutSafety";
 
 import { useContext } from "react";
 import { UserContext } from "./contexts/UserContext";
@@ -44,6 +45,8 @@ const App = () => {
         <Route path="/sign-in" element={<SignInForm />} />
 
         <Route path="/admin" element={<AdminDashboardPage />} />
+        <Route path="/about" element={<AboutSafety />} />
+
       </Routes>
     </>
   );
