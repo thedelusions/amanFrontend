@@ -107,9 +107,6 @@ const ReportsList = () => {
         <ul className="reports-grid">
           {filteredReports.map((report) => (
             <li key={report._id} className="report-card">
-              <div className={`status-badge status-${report.status}`} style={{ backgroundColor: getStatusColor(report.status) }}>
-                {report.status}
-              </div>
               <h3>{report.title}</h3>
               <p><strong>Author:</strong> {report.author?.name}</p>
               <p><strong>Area:</strong> {report.area || report.areaName}</p>

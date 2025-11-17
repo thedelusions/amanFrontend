@@ -1,6 +1,8 @@
 import { Routes, Route } from "react-router";
 
 import NavBar from "./components/NavBar/NavBar";
+import Footer from "./components/Footer/Footer";
+
 import SignUpForm from "./components/SignUpForm/SignUpForm";
 import SignInForm from "./components/SignInForm/SignInForm";
 import Landing from "./components/Landing/Landing";
@@ -8,6 +10,7 @@ import Home from "./components/Home/Home";
 import ReportsList from "./components/ReportsList/ReportsList";
 import UserReports from "./components/UserReportsPage/UserReportsPage";
 import ReportShow from "./components/ReportShow/ReportShow";
+import AboutSafety from "./components/AboutSafety/AboutSafety";
 
 import { useContext } from "react";
 import { UserContext } from "./contexts/UserContext";
@@ -29,7 +32,6 @@ const App = () => {
       <Routes>
         {user ? (
           <>
-
             <Route path="/" element={<Home />} />
             <Route path="/community" element={<ReportsList />} />
             <Route path="/reports/:id" element={<ReportShow />} />
@@ -41,16 +43,19 @@ const App = () => {
         ) : (
           <>
             <Route path="/" element={<Landing />} />
-            
           </>
         )}
+
         <Route path="/reports" element={<ReportsList />} />
         <Route path="/reports/:id" element={<ReportShow />} />
         <Route path="/sign-up" element={<SignUpForm />} />
         <Route path="/sign-in" element={<SignInForm />} />
 
         <Route path="/admin" element={<AdminDashboardPage />} />
+        <Route path="/about" element={<AboutSafety />} />
       </Routes>
+
+      <Footer />
     </>
   );
 };
