@@ -13,6 +13,16 @@ const AboutSafety = () => {
               with reliable reporting tools, trusted community leadership, and shared awareness.
             </p>
           </div>
+
+          <div className="about-illustration">
+            <img 
+              src="https://cdn-icons-png.freepik.com/512/8382/8382785.png"
+              alt="Neighborhood Safety"
+            />
+          </div>
+
+          <div className="bg-shape shape1"></div>
+          <div className="bg-shape shape2"></div>
         </div>
 
         <div className="mission-text">

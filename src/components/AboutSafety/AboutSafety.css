@@ -16,9 +16,15 @@
 
 .about-box {
   flex: 0.9;
-  background: #f6f3ee;
-  padding: 28px;
-  border-radius: 22px;
+  background: linear-gradient(135deg, #f6f3ee, #ece7df);
+  padding: 35px;
+  border-radius: 26px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 240px;
 }
 
 .about-text {
@@ -35,6 +41,37 @@
   font-size: 1.05rem;
   line-height: 1.7;
   opacity: 0.85;
+}
+
+.about-illustration img {
+  width: 180px;
+  height: auto;
+  opacity: 0.95;
+  position: relative;
+  z-index: 2;
+}
+
+.bg-shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.35;
+}
+
+.shape1 {
+  width: 220px;
+  height: 220px;
+  background: #cde0d8;
+  top: -40px;
+  right: -40px;
+}
+
+.shape2 {
+  width: 200px;
+  height: 200px;
+  background: #e8dacc;
+  bottom: -30px;
+  left: -30px;
 }
 
 .mission-text {
