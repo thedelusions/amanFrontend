@@ -56,7 +56,6 @@
   color: #666;
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 2; /* show 2 lines only */
   -webkit-box-orient: vertical;
   line-height: 1.4;
   min-height: 48px; /* ensures uniform height for 2 lines */
