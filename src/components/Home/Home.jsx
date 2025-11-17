@@ -1,44 +1,46 @@
 import { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../contexts/UserContext';
 import * as reportService from '../../services/reportService';
+import { useNavigate } from 'react-router';
 import './Home.css';
 
 const Home = () => {
   const { user } = useContext(UserContext);
   const [reports, setReports] = useState([]);
+  const navigate = useNavigate();
 
-  // to have summary of reports to be displayed 
- useEffect(() => {
+  useEffect(() => {
     const loadReports = async () => {
       try {
         if (user?.area) {
           const data = await reportService.getReportsByArea(user.area);
-          setReports(data);
-        } 
+          setReports(data || []);
+          console.log('Reports fetched for area:', user.area, data);
+        }
       } catch (err) {
         console.error('Error fetching reports:', err);
+        setReports([]);
       }
     };
 
-    loadReports();
+    if (user) loadReports();
   }, [user]);
 
-  //In order to use it in the return we need to count how many reports of each type in the area of the user 
+  // Count reports by type
   const suspiciousCount = reports.filter(r => r.type === 'suspicious').length;
   const lostCount = reports.filter(r => r.type === 'lost').length;
   const foundCount = reports.filter(r => r.type === 'found').length;
 
   return (
-    
     <div className="home-container">
       <section className="hero-section">
         <h1>Aman</h1>
-        <p className="hero-subtitle">Community Watch & Lost & Found </p>
-        <p className="welcome-user">Welcome back, {user?.name} </p>
+        <p className="hero-subtitle">Community Watch & Lost & Found</p>
+        <p className="welcome-user">Welcome back, {user?.name}</p>
 
         <div>
           <button onClick={() => navigate('/community')}>View Community</button>
-          <button onClick={() => navigate('/create-report')}>Add a Report</button>
+          <button onClick={() => navigate('/reports/create')}>Add a Report</button>
         </div>
       </section>
 
@@ -46,15 +48,15 @@ const Home = () => {
         <div className="features-grid">
           <div className="feature-card">
             <h3>Safety Alerts</h3>
-            <p> {suspiciousCount} Report suspicious activities in {user?.area}</p>
+            <p>{suspiciousCount} suspicious reports in {user?.area}</p>
           </div>
           <div className="feature-card">
             <h3>Lost Items</h3>
-            <p> {lostCount} items are lost in your area</p>
+            <p>{lostCount} items are lost in {user?.area}</p>
           </div>
           <div className="feature-card">
             <h3>Found Items</h3>
-            <p> {foundCount} found items are near help returning them to their owners</p>
+            <p>{foundCount} found items in {user?.area}</p>
           </div>
         </div>
       </section>
