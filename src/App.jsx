@@ -1,6 +1,8 @@
 import { Routes, Route } from "react-router";
 
 import NavBar from "./components/NavBar/NavBar";
+import Footer from "./components/Footer/Footer";
+
 import SignUpForm from "./components/SignUpForm/SignUpForm";
 import SignInForm from "./components/SignInForm/SignInForm";
 import Landing from "./components/Landing/Landing";
@@ -26,7 +28,6 @@ const App = () => {
       <Routes>
         {user ? (
           <>
-
             <Route path="/" element={<Home />} />
             <Route path="/reports" element={<ReportsList />} />
             <Route path="/reports/:id" element={<ReportShow />} />
@@ -36,9 +37,9 @@ const App = () => {
         ) : (
           <>
             <Route path="/" element={<Landing />} />
-            
           </>
         )}
+
         <Route path="/reports" element={<ReportsList />} />
         <Route path="/reports/:id" element={<ReportShow />} />
         <Route path="/sign-up" element={<SignUpForm />} />
@@ -46,8 +47,9 @@ const App = () => {
 
         <Route path="/admin" element={<AdminDashboardPage />} />
         <Route path="/about" element={<AboutSafety />} />
-
       </Routes>
+
+      <Footer />
     </>
   );
 };
