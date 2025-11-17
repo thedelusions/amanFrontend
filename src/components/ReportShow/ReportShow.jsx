@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router';
 import { UserContext } from '../../contexts/UserContext';
 import * as reportService from '../../services/reportService';
 import CommentForm from '../CommentForm/CommentForm';

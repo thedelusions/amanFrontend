@@ -3,7 +3,7 @@ import { UserContext } from "../../contexts/UserContext";
 import * as userService from "../../services/userService";
 import * as reportService from "../../services/reportService";
 import Footer from "../Footer/Footer";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import "./UserReportsPage.css";
 
 const UserReportsPage = () => {

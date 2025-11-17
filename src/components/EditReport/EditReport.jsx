@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router';
 import * as reportService from '../../services/reportService';
 import Footer from '../Footer/Footer';
 import areasFile from '../../data/bh.json';
