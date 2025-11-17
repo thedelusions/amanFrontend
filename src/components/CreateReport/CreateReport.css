@@ -1,0 +1,115 @@
+.create-report-container {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 2rem 2.5rem;
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(255,255,255,0.35);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: 22px;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.18);
+  animation: fadeInUp 0.8s ease;
+}
+
+.create-report-container header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.create-report-container header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  color: var(--plum-wine);
+  margin-bottom: 0.5rem;
+}
+
+.create-report-container header p {
+  font-size: 1rem;
+  color: var(--carbon-powder);
+}
+
+.create-report-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.create-report-form label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--carbon-powder);
+}
+
+.create-report-form input,
+.create-report-form select,
+.create-report-form textarea {
+  width: 100%;
+  padding: 0.9rem 1.2rem;
+  border-radius: 12px;
+  border: 1px solid var(--almond-light);
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.create-report-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.create-report-form input:focus,
+.create-report-form select:focus,
+.create-report-form textarea:focus {
+  border-color: var(--plum-wine);
+  box-shadow: 0 5px 15px rgba(86,28,36,0.15);
+}
+
+.create-report-form button {
+  padding: 0.85rem 2rem;
+  border-radius: 14px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border: none;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: all 0.3s ease;
+}
+
+.create-report-form button[type="submit"] {
+  color: #fff;
+  background: var(--plum-wine);
+}
+
+.create-report-form button[type="submit"]:hover {
+  background: var(--carbon-powder);
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 7px 20px rgba(0,0,0,0.18);
+}
+
+.create-report-form button[type="submit"]:active {
+  transform: scale(0.97);
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .create-report-container {
+    padding: 1.5rem 1.8rem;
+  }
+
+  .create-report-container header h1 {
+    font-size: 2rem;
+  }
+
+  .create-report-container header p {
+    font-size: 0.95rem;
+  }
+
+  .create-report-form button {
+    width: 100%;
+    text-align: center;
+  }
+}

@@ -1,11 +1,23 @@
-// src/components/Landing.jsx
+import { Link } from 'react-router';
+import Footer from '../Footer/Footer';
+import "./Landing.css";
 
 const Landing = () => {
   return (
-    <main>
-      <h1>Hello, you are on the landing page for visitors.</h1>
-      <p>Sign up now, or sign in to see your super secret dashboard!</p>
-    </main>
+    <>
+    <main className='home-container'>
+      <section className='hero-section'>
+      <h1>Welcome to Aman</h1>
+      <h3 className='hero-subtitle'>Aman - Your Community Safety Reporting Platform</h3>
+      <h4>Report lost, found, or suspicious items easily and securely</h4>
+          <div className="landing-buttons">
+          <Link to="/sign-up" className="btn-primary">Sign Up</Link>
+          <Link to="/sign-in" className="btn-secondary">Sign In</Link>
+          </div>      
+      </section>
+      </main>
+          <Footer />
+    </>
   );
 };
 
