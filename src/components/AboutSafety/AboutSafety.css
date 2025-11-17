@@ -6,3 +6,50 @@
   font-family: "Inter", sans-serif;
   color: #1f2c2e;
 }
+
+.top-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.about-box {
+  flex: 0.9;
+  background: #f6f3ee;
+  padding: 28px;
+  border-radius: 22px;
+}
+
+.about-text {
+  max-width: 55%;
+}
+
+.about-text h1 {
+  font-size: 2.2rem;
+  font-family: "Playfair Display", serif;
+  margin-bottom: 12px;
+}
+
+.about-text p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  opacity: 0.85;
+}
+
+.mission-text {
+  flex: 1.1;
+  padding-top: 10px;
+}
+
+.mission-text h2 {
+  font-size: 2rem;
+  font-family: "Playfair Display", serif;
+  margin-bottom: 12px;
+}
+
+.mission-text p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  opacity: 0.85;
+}
