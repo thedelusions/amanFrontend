@@ -71,7 +71,9 @@ const AdminDashboardPage = () => {
         {filteredReports.map((r) => (
           <div key={r._id} className="admin-report-card">
             <h3>{r.title}</h3>
-
+            <p>
+              <strong>User:</strong> {r.author.name}
+            </p>
             <p>
               <strong>Type:</strong> {r.type}
             </p>

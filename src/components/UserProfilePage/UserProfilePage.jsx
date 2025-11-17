@@ -115,23 +115,6 @@ const UserProfilePage = () => {
           </button>
         </section>
 
-        {}
-        <section className="reports-section">
-          <h2>Your Reports</h2>
-
-          {reports.length === 0 ? (
-            <p className="no-reports">No reports yet.</p>
-          ) : (
-            reports.map((r) => (
-              <div key={r._id} className="report-card">
-                <h3>{r.title}</h3>
-                <p><strong>Type:</strong> {r.type}</p>
-                <p><strong>Status:</strong> {r.status}</p>
-              </div>
-            ))
-          )}
-        </section>
-
       </main>
 
       <Footer />

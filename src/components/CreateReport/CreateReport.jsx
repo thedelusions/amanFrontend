@@ -23,7 +23,7 @@ const CreateReport = () => {
     try{
     e.preventDefault();
       await reportService.create(formData);
-      navigate('/user-reports'); 
+      navigate('/my-reports'); 
     } catch(error){
         console.log(error);
     }
