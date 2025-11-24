@@ -73,7 +73,7 @@ Aman empowers neighborhoods by providing tools for:
 
 🌍 Deployed App
 [( deployed link )
-](https://aman-frontend-sdf8-gqx1f8vvf-bios-scripts-projects.vercel.app/)
+](https://aman-frontend.vercel.app)
 
 📂 Repositories
 **Frontend Repo**
