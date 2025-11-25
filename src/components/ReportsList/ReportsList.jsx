@@ -15,7 +15,7 @@ const ReportsList = () => {
   const [areaFilter, setAreaFilter] = useState('all');
 
   const navigate = useNavigate();
-  const areas = areasFile.map(a => a.city);
+  const areas = Object.values(areasFile).flat().sort();
 
   useEffect(() => {
     const fetchReports = async () => {

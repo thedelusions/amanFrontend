@@ -8,7 +8,7 @@ import '../CreateReport/CreateReport.css';
 const EditReport = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  const areas = areasFile.map(a => a.city);
+  const areas = Object.values(areasFile).flat().sort();
 
   const [formData, setFormData] = useState({
     title: '',

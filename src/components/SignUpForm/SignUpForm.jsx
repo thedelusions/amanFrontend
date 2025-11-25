@@ -114,9 +114,9 @@ const SignUpForm = () => {
               required
             >
               <option value=''>Select an area</option>
-              {areas.map((areaObj) => (
-                <option key={areaObj.city} value={areaObj.city}>
-                  {areaObj.city}
+              {Object.values(areas).flat().sort().map((area) => (
+                <option key={area} value={area}>
+                  {area}
                 </option>
               ))}
             </select>
