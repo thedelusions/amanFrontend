@@ -7,7 +7,7 @@ import './CreateReport.css';
 
 const CreateReport = () => {
   const navigate = useNavigate();
-  const areas = areasFile.map(a => a.city);
+  const areas = Object.values(areasFile).flat().sort();
 
   const [formData, setFormData] = useState({
     title: '',
